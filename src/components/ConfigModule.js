@@ -8,6 +8,10 @@ import DeleteIcon from 'material-ui-icons/Delete';
 import ClearIcon from 'material-ui-icons/Clear';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
+import Divider from 'material-ui/Divider';
+import { blueGrey } from 'material-ui/colors';
+
+import ParameterUnit from './ParameterUnit'
 
 import Dialog, {
   DialogActions,
@@ -21,14 +25,15 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
+    background: blueGrey[50],// #afbbc9
     width: 400,
   }
 });
 
 
 class ConfigModule extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       open: false
     };
@@ -47,40 +52,52 @@ class ConfigModule extends Component {
 
     return (
       <div className="ConfigModule">
-        <IconButton className={classes.button} aria-label="Delete"
-                    onClick={this.handleOpen}>
-          <ClearIcon />
-        </IconButton>
-        <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
-          <DialogTitle>{"Use Google's location service?"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Let Google help apps determine location. This means sending anonymous location data to
-              Google, even when no apps are running.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleRequestClose} color="primary">
-              Discard
-            </Button>
-            <Button onClick={this.handleRequestClose} color="primary" autoFocus>
-              Cancel
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <TextField
-          id="module-name"
-          className={classes.textField}
-          label="Module Name"
-          fullWidth
-          margin="normal"
-        />
-        <Button raised color="primary" className={classes.button}>
-        Save
-        </Button>
+        <div className="ConfigModuleHeader">
+          <IconButton className={classes.button} aria-label="Delete"
+                      onClick={this.handleOpen}>
+            <ClearIcon />
+          </IconButton>
+          <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
+            <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Let Google help apps determine location. This means sending anonymous location data to
+                Google, even when no apps are running.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleRequestClose} color="primary">
+                Discard
+              </Button>
+              <Button onClick={this.handleRequestClose} color="primary" autoFocus>
+                Cancel
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <TextField
+            id="module-name"
+            className={classes.textField}
+            label="Module Name"
+            fullWidth
+            margin="normal"
+          />
+          <Button raised color="primary" className={classes.button}>
+          Save
+          </Button>
+        </div>
+        <Divider />
+        <div className="ConfigModuleContents">
+          <ParameterUnit />
+          <ParameterUnit />
+        </div>
+
       </div>
     );
   }
 }
+
+ConfigModule.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(ConfigModule);

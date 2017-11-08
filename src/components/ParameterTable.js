@@ -36,10 +36,6 @@ class ParameterTable extends Component {
     super(props);
   }
 
-  propTypes = {
-    classes: PropTypes.object.isRequired
-  };
-
   render() {
     const { classes } = this.props;
     return (
@@ -66,5 +62,9 @@ class ParameterTable extends Component {
     );
   }
 }
+
+ParameterTable.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(ParameterTable);

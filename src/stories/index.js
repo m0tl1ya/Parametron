@@ -13,6 +13,7 @@ import NavBar from '../components/NavBar';
 import ModuleCard from '../components/ModuleCard';
 import ParameterTable from '../components/ParameterTable';
 import ConfigModule from '../components/ConfigModule';
+import ParameterUnit from '../components/ParameterUnit';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -32,4 +33,7 @@ storiesOf('ModuleCard', module)
 
 
 storiesOf('ConfigModule', module)
-  .add('module', () => <ConfigModule></ConfigModule>);
+  .add('ConfigModule', () => <ConfigModule></ConfigModule>);
+
+storiesOf('ParameterUnit', module)
+  .add('ParameterUnit', () => <ParameterUnit></ParameterUnit>);
