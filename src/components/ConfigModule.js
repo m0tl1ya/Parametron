@@ -27,6 +27,16 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     background: blueGrey[50],// #afbbc9
     width: 400,
+  },
+  descField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    background: blueGrey[50],// #afbbc9
+    width: 500,
+  },
+  addButton: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
   }
 });
 
@@ -47,6 +57,13 @@ class ConfigModule extends Component {
     this.setState({open: false});
   };
 
+  addNewParameter = () => {
+    console.log("parameter added");
+    return (
+      <ParameterUnit />
+    );
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -58,11 +75,10 @@ class ConfigModule extends Component {
             <ClearIcon />
           </IconButton>
           <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
-            <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+            <DialogTitle>{"Do you discard settings?"}</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                Let Google help apps determine location. This means sending anonymous location data to
-                Google, even when no apps are running.
+                Do you discard settings?
               </DialogContentText>
             </DialogContent>
             <DialogActions>
@@ -89,7 +105,25 @@ class ConfigModule extends Component {
         <div className="ConfigModuleContents">
           <ParameterUnit />
           <ParameterUnit />
+          <Button
+            onClick={this.addNewParameter}
+            color="primary"
+            className={classes.addButton}>
+            Add Parameter
+          </Button>
+          <form>
+            <TextField
+            id="full-width"
+            label="Description"
+            className={classes.descField}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            margin="normal"
+          />
+          </form>
         </div>
+
 
       </div>
     );

@@ -23,7 +23,7 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   textField: {
-    marginLeft: theme.spacing.unit,
+    marginLeft: '2em',
     marginRight: theme.spacing.unit,
     width: 300,
   },
