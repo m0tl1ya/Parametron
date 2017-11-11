@@ -15,6 +15,8 @@ import ParameterTable from '../components/ParameterTable';
 import ConfigModule from '../components/ConfigModule';
 import ParameterUnit from '../components/ParameterUnit';
 
+import ProjectTable from '../components/ProjectTable';
+
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
@@ -37,3 +39,6 @@ storiesOf('ConfigModule', module)
 
 storiesOf('ParameterUnit', module)
   .add('ParameterUnit', () => <ParameterUnit></ParameterUnit>);
+
+storiesOf('ProjectTable', module)
+  .add('ProjectTable', () => <ProjectTable></ProjectTable>)

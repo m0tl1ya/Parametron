@@ -42,10 +42,6 @@ class ModuleCard extends Component {
     };
   }
 
-  propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
   };
@@ -58,25 +54,35 @@ class ModuleCard extends Component {
           <CardHeader
             title="Training Module"
             subheader="Contain training params of VAE"
-          />
-          <IconButton
-              className={classnames(classes.expand, {
-                [classes.expandOpen]: this.state.expanded,
-              })}
-              onClick={this.handleExpandClick}
-              aria-expanded={this.state.expanded}
-              aria-label="Show more"
-            >
-              <ExpandMoreIcon />
-          </IconButton>
+          >
+          </CardHeader>
+          <CardActions>
+            <div className={classes.flexGrow} />
+            <IconButton
+                className={classnames(classes.expand, {
+                  [classes.expandOpen]: this.state.expanded,
+                })}
+                onClick={this.handleExpandClick}
+                aria-expanded={this.state.expanded}
+                aria-label="Show more"
+              >
+                <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+
           <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
             <ParameterTable />
           </Collapse>
+
         </Card>
       </div>
     );
   }
 }
+
+ModuleCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 
 export default withStyles(styles)(ModuleCard);

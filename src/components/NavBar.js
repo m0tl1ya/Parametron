@@ -16,8 +16,10 @@ import ChevronRightIcon from 'material-ui-icons/ChevronRight';
 
 
 import InboxIcon from 'material-ui-icons/Inbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
-
+import FolderIcon from 'material-ui-icons/Folder';
+import WebAssetIcon from 'material-ui-icons/WebAsset';
+import CreateNewFolderIcon from 'material-ui-icons/CreateNewFolder';
+import AddBoxIcon from 'material-ui-icons/AddBox';
 
 const styles = theme => ({
   root: {
@@ -48,10 +50,6 @@ class NavBar extends Component {
     this.state = {open: false};
   }
 
-  propTypes = {
-    classes: PropTypes.object.isRequired
-  };
-
   handleDrawer = () => {
     this.setState({open: !this.state.open});
   };
@@ -80,25 +78,31 @@ class NavBar extends Component {
             <List>
                 <ListItem button>
                   <ListItemIcon>
-                    <InboxIcon />
+                    <FolderIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Inbox" />
+                  <ListItemText primary="Projects" />
                 </ListItem>
                 <ListItem button>
                   <ListItemIcon>
-                    <DraftsIcon />
+                    <WebAssetIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Drafts" />
+                  <ListItemText primary="Modules" />
                 </ListItem>
             </List>
-              <Divider />
-              <List>
-                <ListItem button>
-                  <ListItemText primary="Trash" />
-                </ListItem>
-                <ListItem button component="a" href="#simple-list">
-                  <ListItemText primary="Spam" />
-                </ListItem>
+            <Divider />
+            <List>
+              <ListItem button>
+                <ListItemIcon>
+                  <CreateNewFolderIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Project" />
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon>
+                  <AddBoxIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Module" />
+              </ListItem>
             </List>
           </div>
         </Drawer>
@@ -107,8 +111,8 @@ class NavBar extends Component {
   }
 }
 
-// NavBar.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
+NavBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(NavBar);
