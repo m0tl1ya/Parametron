@@ -20,7 +20,7 @@ let id = 0;
 function createData(name, type, value) {
   id += 1;
   return { id, name, type, value };
-}
+};
 
 const data = [
   createData('learning rate', 'number', 6.0),
@@ -31,37 +31,32 @@ const data = [
 ];
 
 
-class ParameterTable extends Component {
-  constructor(props) {
-    super(props);
-  }
+const ParameterTable = (props) => {
+  const { classes } = props;
 
-  render() {
-    const { classes } = this.props;
-    return (
-      <Paper className={classes.root}>
-        <Table>
-          <TableHead>
-            <TableCell>Parameter Name</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell>Value</TableCell>
-          </TableHead>
-          <TableBody>
-            {data.map(n => {
-            return (
-              <TableRow key={n.id}>
-                <TableCell>{n.name}</TableCell>
-                <TableCell numeric>{n.type}</TableCell>
-                <TableCell numeric>{n.value}</TableCell>
-              </TableRow>
-            );
-          })}
-          </TableBody>
-        </Table>
-      </Paper>
-    );
-  }
-}
+  return (
+    <Paper className={classes.root}>
+      <Table>
+        <TableHead>
+          <TableCell>Parameter Name</TableCell>
+          <TableCell>Type</TableCell>
+          <TableCell>Value</TableCell>
+        </TableHead>
+        <TableBody>
+          {data.map(n => {
+          return (
+            <TableRow key={n.id}>
+              <TableCell>{n.name}</TableCell>
+              <TableCell numeric>{n.type}</TableCell>
+              <TableCell numeric>{n.value}</TableCell>
+            </TableRow>
+          );
+        })}
+        </TableBody>
+      </Table>
+    </Paper>
+  );
+};
 
 ParameterTable.propTypes = {
   classes: PropTypes.object.isRequired,

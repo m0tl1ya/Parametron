@@ -46,7 +46,7 @@ const toolbarStyles = theme => ({
   },
 });
 
-let ProjectTableToolbar = (props) => {
+const ProjectTableToolbar = (props) => {
   const { numSelected, classes } = props;
 
   return (
@@ -59,7 +59,7 @@ let ProjectTableToolbar = (props) => {
         {numSelected > 0 ? (
           <Typography type="subheading">{numSelected} selected</Typography>
         ) : (
-          <Typography type="title">Nutrition</Typography>
+          <Typography type="title">Project List</Typography>
         )}
       </div>
       <div className={classes.spacer} />

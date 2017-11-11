@@ -30,17 +30,12 @@ const styles = theme => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-
-
   flexGrow: {
     flex: '1 1 auto',
   },
-  spacer: {
-    flex: '1 1 100%',
-  },
 });
 
-class ModuleCard2 extends Component {
+class ModuleCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,13 +52,12 @@ class ModuleCard2 extends Component {
     return (
       <div>
         <Card>
-          <Toolbar>
-            <div className={classes.title}>
-              <Typography type="title">Training Module</Typography>
-              <div className={classes.description}>
-                Contain training params of VAE Contain training params of VAE
-              </div>
-            </div>
+          <CardHeader
+            title="Training Module"
+            subheader="Contain training params of VAE"
+          >
+          </CardHeader>
+          <CardActions>
             <div className={classes.flexGrow} />
             <IconButton
                 className={classnames(classes.expand, {
@@ -75,9 +69,7 @@ class ModuleCard2 extends Component {
               >
                 <ExpandMoreIcon />
             </IconButton>
-            <div className={classes.actions}>
-            </div>
-          </Toolbar>
+          </CardActions>
 
           <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
             <ParameterTable />
@@ -89,9 +81,9 @@ class ModuleCard2 extends Component {
   }
 }
 
-ModuleCard2.propTypes = {
+ModuleCard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 
-export default withStyles(styles)(ModuleCard2);
+export default withStyles(styles)(ModuleCard);

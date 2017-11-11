@@ -26,9 +26,9 @@ import ProjectTableToolbar from './ProjectTableToolbar'
 
 
 let counter = 0;
-function createData(name, calories, fat, carbs, protein) {
+function createData(projectName, description, updated) {
   counter += 1;
-  return { id: counter, name, calories, fat, carbs, protein };
+  return { id: counter, projectName, description, updated };
 }
 
 
@@ -51,33 +51,35 @@ class ProjectTable extends Component {
 
     this.state = {
       order: 'asc',
-      orderBy: 'calories',
+      orderBy: 'updated',
       selected: [],
       data: [
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Donut', 452, 25.0, 51, 4.9),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-        createData('Honeycomb', 408, 3.2, 87, 6.5),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Jelly Bean', 375, 0.0, 94, 0.0),
-        createData('KitKat', 518, 26.0, 65, 7.0),
-        createData('Lollipop', 392, 0.2, 98, 0.0),
-        createData('Marshmallow', 318, 0, 81, 2.0),
-        createData('Nougat', 360, 19.0, 9, 37.0),
-        createData('Oreo', 437, 18.0, 63, 4.0),
-      ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
+        createData('VVV', 'AAE', "2015/05/14 20:02:02"),
+        createData('Donut', 'VAE', "2015/06/14 20:02:02"),
+        createData('Eclair', 'VAE', "2016/05/14 20:02:02"),
+        createData('Frozen yoghurt', 'VAE', "2015/07/14 20:02:02"),
+        createData('Gingerbread', 'VAE', "2015/05/14 20:02:02"),
+        createData('Honeycomb', 'ZVAE', "2017/05/14 20:02:02"),
+        createData('Ice cream sandwich', 'Ice cream sandwich', "2015/05/14 20:02:02"),
+        createData('Jelly Bean', 'Ice cream sandwich', "2015/05/15 20:02:02"),
+        createData('KitKat', 'Ice cream sandwich', "2015/05/13 20:02:02"),
+        createData('Lollipop', 'Ice cream sandwich', "2015/07/14 20:02:02"),
+        createData('Marshmallow', 'Ice cream sandwich Ice cream', "2015/05/14 20:02:02"),
+        createData('Nougat', 'Ice cream sandwich', "2015/03/14 20:02:02"),
+        createData('Oreo', 'Ice cream sandwich',　"2012/12/14 20:02:02"),
+      ].sort((a, b) => (a.updated < b.updated ? -1 : 1)),
       page: 0,
-      rowsPerPage: 5,
+      rowsPerPage: 10,
     };
   }
 
   handleRequestSort = (event, property) => {
+    // console.log(property);
     const orderBy = property;
     let order = 'desc';
 
     if (this.state.orderBy === property && this.state.order === 'desc') {
+      // console.log('asc');
       order = 'asc';
     }
 
@@ -121,6 +123,8 @@ class ProjectTable extends Component {
       );
     }
 
+    // print clicked project
+    // console.log(newSelected);
     this.setState({ selected: newSelected });
   };
 
@@ -154,6 +158,7 @@ class ProjectTable extends Component {
             <TableBody>
               {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
                 const isSelected = this.isSelected(n.id);
+                // console.log(n.id);
                 return (
                   <TableRow
                     hover
@@ -168,11 +173,9 @@ class ProjectTable extends Component {
                     <TableCell padding="checkbox">
                       <Checkbox checked={isSelected} />
                     </TableCell>
-                    <TableCell padding="none">{n.name}</TableCell>
-                    <TableCell numeric>{n.calories}</TableCell>
-                    <TableCell numeric>{n.fat}</TableCell>
-                    <TableCell numeric>{n.carbs}</TableCell>
-                    <TableCell numeric>{n.protein}</TableCell>
+                    <TableCell padding="none">{n.projectName}</TableCell>
+                    <TableCell padding="none">{n.description}</TableCell>
+                    <TableCell>{n.updated}</TableCell>
                   </TableRow>
                 );
               })}
