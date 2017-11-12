@@ -16,11 +16,17 @@ const styles = theme => ({
   },
 });
 
-let id = 0;
+let counter = 0;
 function createData(name, type, value) {
-  id += 1;
-  return { id, name, type, value };
+  counter += 1;
+  return { id: counter, name, type, value };
 };
+
+const columnData = [
+  { id: 'parameterName', numeric: false, disablePadding: false, label: 'Parameter Name' },
+  { id: 'type', numeric: false, disablePadding: false, label: 'Type' },
+  { id: 'value', numeric: false, disablePadding: false, label: 'Value' },
+];
 
 const data = [
   createData('learning rate', 'number', 6.0),
@@ -38,9 +44,20 @@ const ParameterTable = (props) => {
     <Paper className={classes.root}>
       <Table>
         <TableHead>
-          <TableCell>Parameter Name</TableCell>
-          <TableCell>Type</TableCell>
-          <TableCell>Value</TableCell>
+          <TableRow>
+            {columnData.map(column => {
+              return (
+                <TableCell
+                  key={column.id}
+                  numeric={column.numeric}
+                  padding={column.disablePadding ? 'none' : 'default'}
+                >
+                {column.label}
+                </TableCell>
+              );
+            }, this)}
+
+          </TableRow>
         </TableHead>
         <TableBody>
           {data.map(n => {
@@ -58,6 +75,9 @@ const ParameterTable = (props) => {
   );
 };
 
+// <TableCell>Parameter Name</TableCell>
+// <TableCell>Type</TableCell>
+// <TableCell>Value</TableCell>
 ParameterTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };

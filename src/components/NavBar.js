@@ -21,6 +21,9 @@ import WebAssetIcon from 'material-ui-icons/WebAsset';
 import CreateNewFolderIcon from 'material-ui-icons/CreateNewFolder';
 import AddBoxIcon from 'material-ui-icons/AddBox';
 
+import { Link } from 'react-router-dom'
+
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -33,16 +36,6 @@ const styles = theme => ({
     marginRight: 20,
   },
 });
-
-
-function Square(props) {
-  return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
-    </button>
-  );
-}
-
 
 class NavBar extends Component {
   constructor(props) {
@@ -76,12 +69,14 @@ class NavBar extends Component {
           >
           <div className={classes.drawerInner}>
             <List>
+              <Link to="/ProjectTable">
                 <ListItem button>
                   <ListItemIcon>
                     <FolderIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Projects" />
+                    <ListItemText primary="Projects" />
                 </ListItem>
+              </Link>
                 <ListItem button>
                   <ListItemIcon>
                     <WebAssetIcon />
