@@ -1,24 +1,41 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 // import './App.css';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import Layout from './Layout';
+// import Layout from './Layout';
 import ProjectTable from './ProjectTable';
 import ConfigProject from './ConfigProject';
 import ConfigModule from './ConfigModule';
 import NavBar from './NavBar';
 
-const App = ({ children }) => (
+
+const App = () => (
   <BrowserRouter>
     <div>
-      <Route exact path="/" component={Layout} />
-      <Route path="/ProjectTable" component={ProjectTable} />
-      <Route path="/addproject" component={ConfigProject} />
-      <Route path="/addmodule" component={ConfigModule} />
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={ProjectTable} />
+        <Route path="/project-table" component={ProjectTable} />
+        <Route path="/config-project" component={ConfigProject} />
+        <Route path="/config-module" component={ConfigModule} />
+      </Switch>
     </div>
   </BrowserRouter>
 );
+
+
+// const App = ({ children }) => (
+//   <BrowserRouter>
+//     <div>
+//       <Route exact path="/" component={Layout} >
+//         <Route path="/ProjectTable" component={ProjectTable} />
+//         <Route path="/addproject" component={ConfigProject} />
+//         <Route path="/addmodule" component={ConfigModule} />
+//       </Route>
+//     </div>
+//   </BrowserRouter>
+// );
 
 // const routes = (
 //   <Route path="/" component={Layout}>

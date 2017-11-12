@@ -69,7 +69,7 @@ class NavBar extends Component {
           >
           <div className={classes.drawerInner}>
             <List>
-              <Link to="/ProjectTable">
+              <Link to="/project-table">
                 <ListItem button>
                   <ListItemIcon>
                     <FolderIcon />
@@ -77,27 +77,33 @@ class NavBar extends Component {
                     <ListItemText primary="Projects" />
                 </ListItem>
               </Link>
+              <Link to="/config-project">
                 <ListItem button>
                   <ListItemIcon>
                     <WebAssetIcon />
                   </ListItemIcon>
                   <ListItemText primary="Modules" />
                 </ListItem>
+              </Link>
             </List>
             <Divider />
             <List>
-              <ListItem button>
-                <ListItemIcon>
-                  <CreateNewFolderIcon />
-                </ListItemIcon>
-                <ListItemText primary="Add Project" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <AddBoxIcon />
-                </ListItemIcon>
-                <ListItemText primary="Add Module" />
-              </ListItem>
+              <Link to="/config-project">
+                <ListItem button>
+                  <ListItemIcon>
+                    <CreateNewFolderIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Add Project" />
+                </ListItem>
+              </Link>
+              <Link to="/config-module">
+                <ListItem button>
+                  <ListItemIcon>
+                    <AddBoxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Add Module" />
+                </ListItem>
+              </Link>
             </List>
           </div>
         </Drawer>
@@ -105,6 +111,8 @@ class NavBar extends Component {
     );
   }
 }
+
+
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,

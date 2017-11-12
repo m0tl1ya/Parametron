@@ -10,6 +10,7 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import { blueGrey } from 'material-ui/colors';
+import { Link } from 'react-router-dom'
 
 import ParameterUnit from './ParameterUnit'
 
@@ -54,6 +55,7 @@ class ConfigModule extends Component {
   };
 
   handleRequestClose = () => {
+    console.log('Dialig closed');
     this.setState({open: false});
   };
 
@@ -82,9 +84,11 @@ class ConfigModule extends Component {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
+              <Link to="/project-table">
               <Button onClick={this.handleRequestClose} color="primary">
                 Discard
               </Button>
+              </Link>
               <Button onClick={this.handleRequestClose} color="primary" autoFocus>
                 Cancel
               </Button>
