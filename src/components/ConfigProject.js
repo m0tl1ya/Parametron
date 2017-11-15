@@ -57,15 +57,17 @@ class ConfigProject extends Component {
       isDialogOpen: false,
       value: 'one',
     };
-  };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
+  }
 
-  handleChange = (event, value) => {
+  handleChange(event, value) {
     this.setState({ value });
-  };
+  }
 
-  handleRequestClose = () => {
-    this.setState({isDialogOpen: false});
-  };
+  handleRequestClose() {
+    this.setState({ isDialogOpen: false });
+  }
 
   render() {
     const { classes } = this.props;

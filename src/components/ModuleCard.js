@@ -44,13 +44,14 @@ class ModuleCard2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
     };
+    this.handleExpandClick = this.handleExpandClick.bind(this);
   }
 
-  handleExpandClick = () => {
+  handleExpandClick() {
     this.setState({ expanded: !this.state.expanded });
-  };
+  }
 
   render() {
     const { classes } = this.props;

@@ -13,6 +13,7 @@ import { blueGrey } from 'material-ui/colors';
 import { Link } from 'react-router-dom'
 
 import ParameterUnit from './ParameterUnit'
+import ParameterUnit2 from './ParameterUnit2'
 
 import Dialog, {
   DialogActions,
@@ -48,23 +49,26 @@ class ConfigModule extends Component {
     this.state = {
       open: false
     };
-  };
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.addEmptyParameter = this.addEmptyParameter.bind(this);
+  }
 
-  handleOpen = () => {
-    this.setState({open: true});
-  };
+  handleOpen() {
+    this.setState({ open: true });
+  }
 
-  handleRequestClose = () => {
-    console.log('Dialig closed');
-    this.setState({open: false});
-  };
+  handleRequestClose() {
+    // console.log('Dialig closed');
+    this.setState({ open: false });
+  }
 
-  addNewParameter = () => {
-    console.log("parameter added");
+  addEmptyParameter() {
+    // console.log("parameter added");
     return (
       <ParameterUnit />
     );
-  };
+  }
 
   render() {
     const { classes } = this.props;
@@ -85,7 +89,7 @@ class ConfigModule extends Component {
             </DialogContent>
             <DialogActions>
               <Link to="/project-table">
-              <Button onClick={this.handleRequestClose} color="primary">
+              <Button color="primary">
                 Discard
               </Button>
               </Link>
@@ -107,10 +111,10 @@ class ConfigModule extends Component {
         </div>
         <Divider />
         <div className="ConfigModuleContents">
-          <ParameterUnit />
-          <ParameterUnit />
+          <ParameterUnit2 />
+          <ParameterUnit2 />
           <Button
-            onClick={this.addNewParameter}
+            onClick={this.addEmptyParameter}
             color="primary"
             className={classes.addButton}>
             Add Parameter

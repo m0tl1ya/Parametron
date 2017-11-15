@@ -71,9 +71,15 @@ class ProjectTable extends Component {
       page: 0,
       rowsPerPage: 10,
     };
+    this.handleRequestSort = this.handleRequestSort.bind(this);
+    this.handleSelectAllClick = this.handleSelectAllClick.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChangePage = this.handleChangePage.bind(this);
+    this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this);
   }
 
-  handleRequestSort = (event, property) => {
+  handleRequestSort(event, property) {
     // console.log(property);
     const orderBy = property;
     let order = 'desc';
@@ -89,9 +95,9 @@ class ProjectTable extends Component {
         : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
 
     this.setState({ data, order, orderBy });
-  };
+  }
 
-  handleSelectAllClick = (event, checked) => {
+  handleSelectAllClick(event, checked) {
     if (checked) {
       this.setState({ selected: this.state.data.map(n => n.id) });
       return;
@@ -99,13 +105,13 @@ class ProjectTable extends Component {
     this.setState({ selected: [] });
   };
 
-  handleKeyDown = (event, id) => {
+  handleKeyDown(event, id) {
     if (keycode(event) === 'space') {
       this.handleClick(event, id);
     }
-  };
+  }
 
-  handleClick = (event, id) => {
+  handleClick(event, id) {
     const { selected } = this.state;
     const selectedIndex = selected.indexOf(id);
     let newSelected = [];
@@ -122,19 +128,18 @@ class ProjectTable extends Component {
         selected.slice(selectedIndex + 1),
       );
     }
-
     // print clicked project
     // console.log(newSelected);
     this.setState({ selected: newSelected });
-  };
+  }
 
-  handleChangePage = (event, page) => {
+  handleChangePage(event, page) {
     this.setState({ page });
   };
 
-  handleChangeRowsPerPage = event => {
+  handleChangeRowsPerPage(event) {
     this.setState({ rowsPerPage: event.target.value });
-  };
+  }
 
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 

@@ -41,11 +41,12 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {open: false};
+    this.handleDrawer = this.handleDrawer.bind(this);
   }
 
-  handleDrawer = () => {
-    this.setState({open: !this.state.open});
-  };
+  handleDrawer() {
+    this.setState({ open: !this.state.open });
+  }
 
   render() {
     const { classes } = this.props;

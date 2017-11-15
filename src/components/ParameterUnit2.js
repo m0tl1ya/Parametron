@@ -15,9 +15,16 @@ import { FormControl, FormHelperText } from 'material-ui/Form';
 import { MenuItem } from 'material-ui/Menu';
 import Select from 'material-ui/Select';
 
+import Paper from 'material-ui/Paper';
 
 
 const styles = theme => ({
+  root: theme.mixins.gutters({
+    paddingTop: 2,
+    paddingBottom: 2,
+    marginTop: theme.spacing.unit,
+    width: 600,
+  }),
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -75,42 +82,44 @@ class ParameterUnit extends Component {
     const { classes } = this.props;
 
     return (
-      <form className={classes.container} noValidate autoComplete="off">
-        <TextField
-          id="name"
-          label="Name"
-          className={classes.textField}
-          value={this.state.name}
-          onChange={this.handleChange('name')}
-          margin="normal"
-        />
-        <TextField
-          id="select-type"
-          select
-          label="Type"
-          className={classes.selectField}
-          value={this.state.type}
-          onChange={this.handleChange('type')}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          margin="normal"
-        >
-          {parameterTypes.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <IconButton
-          className={classes.deleteButton}
-          aria-label="Delete"
+      <Paper className={classes.root} elevation={4}>
+        <form className={classes.container} noValidate autoComplete="off">
+          <TextField
+            id="name"
+            label="Name"
+            className={classes.textField}
+            value={this.state.name}
+            onChange={this.handleChange('name')}
+            margin="normal"
+          />
+          <TextField
+            id="select-type"
+            select
+            label="Type"
+            className={classes.selectField}
+            value={this.state.type}
+            onChange={this.handleChange('type')}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            margin="normal"
           >
-          <ClearIcon />
-        </IconButton>
-      </form>
+            {parameterTypes.map(option => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <IconButton
+            className={classes.deleteButton}
+            aria-label="Delete"
+            >
+            <ClearIcon />
+          </IconButton>
+        </form>
+      </Paper>
 
     );
   }

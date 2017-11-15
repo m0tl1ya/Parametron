@@ -20,7 +20,7 @@ let counter = 0;
 function createData(name, type, value) {
   counter += 1;
   return { id: counter, name, type, value };
-};
+}
 
 const columnData = [
   { id: 'parameterName', numeric: false, disablePadding: false, label: 'Parameter Name' },
