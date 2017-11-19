@@ -18,6 +18,8 @@ import ConfigProject from '../components/ConfigProject';
 
 import ParameterUnit from '../components/ParameterUnit';
 import ParameterUnit2 from '../components/ParameterUnit2';
+import ParameterTextInput from '../components/ParameterTextInput';
+import Parameter from '../components/Parameter';
 
 import ProjectTable from '../components/ProjectTable';
 
@@ -47,8 +49,15 @@ storiesOf('ConfigProject', module)
 storiesOf('ParameterUnit', module)
   .add('ParameterUnit', () => <ParameterUnit></ParameterUnit>);
 
+storiesOf('Parameter', module)
+  .add('Parameter', () => <Parameter></Parameter>);
+
+storiesOf('ParameterTextInput', module)
+  .add('ParameterTextInput', () => <ParameterTextInput></ParameterTextInput>);
+
 storiesOf('ParameterUnit2', module)
   .add('ParameterUnit2', () => <ParameterUnit2></ParameterUnit2>);
+
 
 storiesOf('ProjectTable', module)
   .add('ProjectTable', () => <ProjectTable></ProjectTable>)
