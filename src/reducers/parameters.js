@@ -2,9 +2,9 @@ import { ADD_PARAMETER, DELETE_PARAMETER, EDIT_PARAMETER, EDIT_PARAMETER_TYPE } 
 
 const initialState = [
   {
+    id: 0,
     text: 'Use Redux',
     type: '',
-    id: 0,
   },
 ];
 
@@ -29,11 +29,13 @@ function parameters(state = initialState, action) {
     case DELETE_PARAMETER:
       return state.filter(parameter =>
         parameter.id !== action.id);
+
     case EDIT_PARAMETER:
       return state.map(parameter =>
         parameter.id === action.id ?
         { ...parameter, text: action.text } :
         parameter);
+
     case EDIT_PARAMETER_TYPE:
       return state.map(parameter =>
         parameter.id === action.id ?

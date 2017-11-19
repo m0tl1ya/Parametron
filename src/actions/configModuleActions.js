@@ -21,7 +21,7 @@ export const editParameter = (id, text) => ({
 });
 
 export const editParameterType = (id, parameterType) => ({
-  type: EDIT_PARAMETER,
+  type: EDIT_PARAMETER_TYPE,
   id,
   parameterType,
 });

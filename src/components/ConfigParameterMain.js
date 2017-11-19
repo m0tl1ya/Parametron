@@ -50,7 +50,7 @@ class ConfigParameterMain extends Component {
   render() {
     const { classes, parameters, actions } = this.props;
     const { filter } = this.state;
-    // console.log(parameters)
+    console.log(parameters)
     const filteredParameters = parameters.filter(PARAMETER_FILTERS[filter]);
     // console.log(filteredParameters);
     return (

@@ -86,10 +86,12 @@ class ParameterItem extends Component {
 
   componentWillMount() {
     this.setState({ name: this.props.parameter.text });
-    // if (this.props.parameter.parameterType !== '') {
-    //   this.setState({ type: this.props.parameter.parameterType });
-    // }
+    // this.setState({ name: this.props.parameter.parameterType });
   }
+
+  // componentDidMount() {
+  //   this.setState({ name: this.props.parameter.parameterTypes });
+  // }
 
   handleClick() {
     // console.log('handleDoubleClick');
@@ -110,11 +112,11 @@ class ParameterItem extends Component {
     this.setState({ editing: false });
   }
 
-  handleType = name => event => {
+  handleType = (id, name) => event => {
+    this.props.editParameterType(id, event.target.value);
     this.setState({
       [name]: event.target.value,
     });
-    // this.props.editParameterType(event.target.value);
   };
 
   render() {
@@ -149,7 +151,7 @@ class ParameterItem extends Component {
             label="Type"
             className={classes.selectField}
             value={this.state.type}
-            onChange={this.handleType('type')}
+            onChange={this.handleType(parameter.id, 'type')}
             SelectProps={{
               MenuProps: {
                 className: classes.menu,
@@ -174,7 +176,7 @@ class ParameterItem extends Component {
 
         </Paper>
       );
-      console.log(this.state);
+      // console.log(this.state);
     }
     return (
       <div>
