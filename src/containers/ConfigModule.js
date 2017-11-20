@@ -8,7 +8,7 @@ import ConfigParameterHeader from '../components/ConfigParameterHeader';
 import ConfigParameterMain from '../components/ConfigParameterMain';
 import * as ConfigModuleActions from '../actions/configModuleActions';
 
-const ConfigParameter = ({ parameters, actions }) => (
+const ConfigModule = ({ parameters, actions }) => (
   <div>
     <ConfigModuleHead parameters={parameters} />
     <ConfigParameterHeader addParameter={actions.addParameter} />
@@ -16,7 +16,7 @@ const ConfigParameter = ({ parameters, actions }) => (
   </div>
 );
 
-ConfigParameter.propTypes = {
+ConfigModule.propTypes = {
   parameters: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
 };
@@ -32,4 +32,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ConfigParameter);
+export default connect(mapStateToProps, mapDispatchToProps)(ConfigModule);

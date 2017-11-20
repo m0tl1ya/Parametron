@@ -6,7 +6,6 @@ import './index.css';
 import App from './components/App';
 import reducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
-import ConfigParameter from './containers/ConfigParameter';
 // import {
 //   BrowserRouter as Router,
 //   Route

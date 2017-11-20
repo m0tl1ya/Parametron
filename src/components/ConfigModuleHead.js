@@ -85,6 +85,7 @@ class ConfigModuleHead extends Component {
     // console.log(this.props.parameters);
     // this.setState({ parameters: this.props.parameters });
     console.log(this.state);
+    localStorage.setItem(this.state.name, JSON.stringify(this.state));
   }
 
 
@@ -142,17 +143,20 @@ class ConfigModuleHead extends Component {
         Save
         </Button>
 
-        <TextField
-        id="full-width"
-        label="Description"
-        className={classes.descField}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        value={this.state.description}
-        onChange={this.handleChange('description')}
-        margin="normal"
-      />
+        <div>
+          <TextField
+          id="full-width"
+          label="Description"
+          className={classes.descField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={this.state.description}
+          onChange={this.handleChange('description')}
+          margin="normal"
+        />
+        </div>
+
       <Divider />
 
 
