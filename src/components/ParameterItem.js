@@ -77,7 +77,7 @@ class ParameterItem extends Component {
     this.state = {
       editing: false,
       name: '',
-      type: '',
+      type: '', // || this.props.parameter.type,
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleSave = this.handleSave.bind(this);
@@ -86,6 +86,7 @@ class ParameterItem extends Component {
 
   componentWillMount() {
     this.setState({ name: this.props.parameter.text });
+    // this.setState({ type: this.props.parameter.type });
     // this.setState({ name: this.props.parameter.parameterType });
   }
 

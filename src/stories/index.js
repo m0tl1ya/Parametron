@@ -14,12 +14,13 @@ import ModuleCard from '../components/ModuleCard';
 import ParameterTable from '../components/ParameterTable';
 
 import ConfigModule from '../components/ConfigModule';
+import ConfigModuleHead from '../components/ConfigModuleHead';
 import ConfigProject from '../components/ConfigProject';
 
 import ParameterUnit from '../components/ParameterUnit';
 import ParameterUnit2 from '../components/ParameterUnit2';
 import ParameterTextInput from '../components/ParameterTextInput';
-import Parameter from '../components/Parameter';
+
 
 import ProjectTable from '../components/ProjectTable';
 
@@ -43,14 +44,17 @@ storiesOf('ModuleCard', module)
 storiesOf('ConfigModule', module)
   .add('ConfigModule', () => <ConfigModule></ConfigModule>);
 
+storiesOf('ConfigModuleHead', module)
+  .add('ConfigModuleHead', () => <ConfigModuleHead></ConfigModuleHead>);
+
+
 storiesOf('ConfigProject', module)
   .add('ConfigProject', () => <ConfigProject></ConfigProject>);
 
 storiesOf('ParameterUnit', module)
   .add('ParameterUnit', () => <ParameterUnit></ParameterUnit>);
 
-storiesOf('Parameter', module)
-  .add('Parameter', () => <Parameter></Parameter>);
+
 
 storiesOf('ParameterTextInput', module)
   .add('ParameterTextInput', () => <ParameterTextInput></ParameterTextInput>);

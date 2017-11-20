@@ -2,12 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
+import ConfigModuleHead from '../components/ConfigModuleHead';
 import ConfigParameterHeader from '../components/ConfigParameterHeader';
 import ConfigParameterMain from '../components/ConfigParameterMain';
 import * as ConfigModuleActions from '../actions/configModuleActions';
 
 const ConfigParameter = ({ parameters, actions }) => (
   <div>
+    <ConfigModuleHead parameters={parameters} />
     <ConfigParameterHeader addParameter={actions.addParameter} />
     <ConfigParameterMain parameters={parameters} actions={actions} />
   </div>
