@@ -10,25 +10,11 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import { blueGrey } from 'material-ui/colors';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from 'material-ui/Dialog';
+import DiscardDialog from './DiscardDialog';
 
-
-
-// const moduleData = [
-//   {
-//     name: '',
-//     description: '',
-//     parameters: [],
-//   },
-// ];
 
 
 const styles = theme => ({
@@ -44,10 +30,6 @@ const styles = theme => ({
     background: blueGrey[50],// #afbbc9
     width: 500,
   },
-  addButton: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-  }
 });
 
 
@@ -58,13 +40,9 @@ class ConfigModuleHead extends Component {
       name: '',
       description: '',
       parameters: this.props.parameters,
-      open: false,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-    this.handleRequestOpen = this.handleRequestOpen.bind(this);
-    this.handleRequestClose = this.handleRequestClose.bind(this);
-  }
+    this.handleSave = this.handleSave.bind(this);  }
 
   // componentDidMount() {
   //   this.setState({ parameters: this.props.parameters });
@@ -89,60 +67,31 @@ class ConfigModuleHead extends Component {
   }
 
 
-  handleRequestOpen() {
-    this.setState({ open: true });
-  }
-
-  handleRequestClose() {
-    // console.log('Dialig closed');
-    this.setState({ open: false });
-  }
-
   render() {
     const { classes } = this.props;
 
     return (
       <div className="ConfigModuleHeader">
-        <IconButton className={classes.button} aria-label="Delete"
-                    onClick={this.handleRequestOpen}>
-          <ClearIcon />
-        </IconButton>
-        <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
-          <DialogTitle>{"Do you discard settings?"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Do you discard settings?
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Link to="/project-table">
-            <Button color="primary">
-              Discard
-            </Button>
-            </Link>
-            <Button onClick={this.handleRequestClose} color="primary" autoFocus>
-              Cancel
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <TextField
-          id="module-name"
-          className={classes.textField}
-          label="Module Name"
-          value={this.state.name}
-          onChange={this.handleChange('name')}
-          fullWidth
-          margin="normal"
-        />
-        <Button
-          raised
-          color="primary"
-          className={classes.button}
-          onClick={this.handleSave}
-        >
-        Save
-        </Button>
-
+        <div>
+          <DiscardDialog />
+          <TextField
+            id="module-name"
+            className={classes.textField}
+            label="Module Name"
+            value={this.state.name}
+            onChange={this.handleChange('name')}
+            fullWidth
+            margin="normal"
+          />
+          <Button
+            raised
+            color="primary"
+            className={classes.button}
+            onClick={this.handleSave}
+          >
+          Save
+          </Button>
+        </div>
         <div>
           <TextField
           id="full-width"
