@@ -11,7 +11,7 @@ class ConfigParameterHeader extends Component {
   handleSave(text) {
     if (text.length !== 0) {
       // console.log(text)
-      this.props.addParameter(text);
+      this.props.addParameter(text.replace(/\s/g, '_'));
     }
   }
 

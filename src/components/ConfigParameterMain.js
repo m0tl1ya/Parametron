@@ -1,27 +1,12 @@
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-
-import Icon from 'material-ui/Icon';
-import IconButton from 'material-ui/IconButton';
-import ClearIcon from 'material-ui-icons/Clear';
-import Button from 'material-ui/Button';
-
-import TextField from 'material-ui/TextField';
-import Divider from 'material-ui/Divider';
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import { MenuItem } from 'material-ui/Menu';
-import Select from 'material-ui/Select';
-
-import Paper from 'material-ui/Paper';
 import ParameterItem from './ParameterItem';
 import { SHOW_ALL } from '../actions/parameterFilters';
 
 const PARAMETER_FILTERS = {
   [SHOW_ALL]: () => true,
-}
+};
 
 
 class ConfigParameterMain extends Component {

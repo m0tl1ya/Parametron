@@ -77,7 +77,7 @@ class ParameterItem extends Component {
     this.state = {
       editing: false,
       name: '',
-      type: '', // || this.props.parameter.type,
+      type: '', //this.props.parameter.type,
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleSave = this.handleSave.bind(this);
@@ -86,6 +86,7 @@ class ParameterItem extends Component {
 
   componentWillMount() {
     this.setState({ name: this.props.parameter.text });
+    // console.log('mount')
     // this.setState({ type: this.props.parameter.type });
     // this.setState({ name: this.props.parameter.parameterType });
   }
@@ -107,7 +108,7 @@ class ParameterItem extends Component {
     if (text.length === 0) {
       this.props.deleteParameter(id);
     } else {
-      this.props.editParameter(id, text);
+      this.props.editParameter(id, text.replace(/\s/g, '_'));
       // console.log(this.props.parameter);
     }
     this.setState({ editing: false });
