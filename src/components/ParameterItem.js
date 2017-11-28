@@ -56,7 +56,7 @@ const styles = theme => ({
   },
 });
 
-const parameterTypes = [
+const typeOfParameters = [
   {
     value: 'Number',
     label: 'Number',
@@ -78,6 +78,7 @@ class ParameterItem extends Component {
       editing: false,
       name: '',
       type: '', //this.props.parameter.type,
+      error: false,
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleSave = this.handleSave.bind(this);
@@ -88,6 +89,7 @@ class ParameterItem extends Component {
     this.setState({ name: this.props.parameter.text });
     // console.log('mount')
     // this.setState({ type: this.props.parameter.type });
+    this.setState({ type: 'Number' });
     // this.setState({ name: this.props.parameter.parameterType });
   }
 
@@ -122,7 +124,7 @@ class ParameterItem extends Component {
   };
 
   render() {
-    const { classes, parameter, completeParameter, deleteParameter }
+    const { classes, parameter, deleteParameter }
      = this.props;
     let element;
     // console.log(this.state.editing); // true after this.setState({ editing: true });
@@ -158,10 +160,14 @@ class ParameterItem extends Component {
               MenuProps: {
                 className: classes.menu,
               },
+              // native: true,
+              // defaultValue: 'this.state.type',
+              // value: this.state.type
             }}
+            // defaultValue={typeOfParameters}
             margin="normal"
           >
-            {parameterTypes.map(option => (
+            {typeOfParameters.map(option => (
               <MenuItem key={option.value} value={option.value}>
                 {option.label}
               </MenuItem>
@@ -200,7 +206,6 @@ ParameterItem.propTypes = {
   parameter: PropTypes.object.isRequired,
   editParameter: PropTypes.func.isRequired,
   deleteParameter: PropTypes.func.isRequired,
-  completeParameter: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(ParameterItem);

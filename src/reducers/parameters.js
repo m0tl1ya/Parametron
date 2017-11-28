@@ -1,12 +1,14 @@
 import { ADD_PARAMETER, DELETE_PARAMETER, EDIT_PARAMETER, EDIT_PARAMETER_TYPE } from '../actions/configModuleActions';
 
 const initialState = [
-  {
-    id: 0,
-    text: 'Use Redux',
-    type: '',
-  },
+  // {
+  //   id: 0,
+  //   text: '',
+  //   type: '',
+  // },
 ];
+
+const initialParameterType = 'Number';
 
 function parameters(state = initialState, action) {
   switch (action.type) {
@@ -21,6 +23,7 @@ function parameters(state = initialState, action) {
         {
           id: state.reduce((maxId, parameter) => Math.max(parameter.id, maxId), -1) + 1,
           text: action.text,
+          type: initialParameterType,
         },
       ];
       // return Object.assign({}, state, {

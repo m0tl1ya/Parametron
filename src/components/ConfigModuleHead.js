@@ -30,6 +30,9 @@ const styles = theme => ({
     background: blueGrey[50],// #afbbc9
     width: 500,
   },
+  button: {
+    top: '0.0em',
+  }
 });
 
 
@@ -62,7 +65,17 @@ class ConfigModuleHead extends Component {
   handleSave() {
     // console.log(this.props.parameters);
     // this.setState({ parameters: this.props.parameters });
-    console.log(this.state);
+
+    console.log(this.props.parameters.length);
+    if (this.props.parameters.length > 0) {
+      if (true) {
+        console.log(this.state);
+      } else {
+      }
+
+    } else {
+
+    }
     localStorage.setItem(this.state.name, JSON.stringify(this.state));
   }
 
