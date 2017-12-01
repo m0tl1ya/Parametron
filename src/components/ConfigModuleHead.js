@@ -48,14 +48,21 @@ class ConfigModuleHead extends Component {
     this.handleSave = this.handleSave.bind(this);  }
 
   // componentDidMount() {
-  //   this.setState({ parameters: this.props.parameters });
+  //   // this.setState({ parameters: this.props.parameters });
   //   // console.log(this.state);
+  //   console.log("component mounted")
   // }
 
   componentWillReceiveProps(nextProps) {
     console.log(nextProps);
     this.setState({ parameters: nextProps.parameters });
   }
+
+  // componentWillUnmount() {
+  //   this.setState({ name: '' });
+  //   this.setState({ description: '' });
+  //   this.props.discardParameters();
+  // }
 
   handleChange = name => event => {
     // console.log('handleChange');
@@ -76,7 +83,12 @@ class ConfigModuleHead extends Component {
     } else {
 
     }
-    localStorage.setItem(this.state.name, JSON.stringify(this.state));
+    // localStorage.setItem(this.state.name, JSON.stringify(this.state));
+
+    //
+    this.setState({ name: '' });
+    this.setState({ description: '' });
+    this.props.discardParameters();
   }
 
 
@@ -130,6 +142,7 @@ class ConfigModuleHead extends Component {
 ConfigModuleHead.propTypes = {
   classes: PropTypes.object.isRequired,
   parameters: PropTypes.object.isRequired,
+  discardParameters: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ConfigModuleHead);

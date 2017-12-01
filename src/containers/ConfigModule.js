@@ -10,7 +10,10 @@ import * as ConfigModuleActions from '../actions/configModuleActions';
 
 const ConfigModule = ({ parameters, actions }) => (
   <div>
-    <ConfigModuleHead parameters={parameters} />
+    <ConfigModuleHead
+      parameters={parameters}
+      discardParameters={actions.discardParameters}
+    />
     <ConfigParameterHeader addParameter={actions.addParameter} />
     <ConfigParameterMain parameters={parameters} actions={actions} />
   </div>

@@ -1,4 +1,10 @@
-import { ADD_PARAMETER, DELETE_PARAMETER, EDIT_PARAMETER, EDIT_PARAMETER_TYPE } from '../actions/configModuleActions';
+import {
+  ADD_PARAMETER,
+  DELETE_PARAMETER,
+  EDIT_PARAMETER,
+  EDIT_PARAMETER_TYPE,
+  DISCARD_PARAMETERS,
+} from '../actions/configModuleActions';
 
 const initialState = [
   // {
@@ -44,6 +50,12 @@ function parameters(state = initialState, action) {
         parameter.id === action.id ?
         { ...parameter, type: action.parameterType } :
         parameter);
+
+    case DISCARD_PARAMETERS:
+      return state.filter(parameter =>
+        parameter.id === -1);
+
+
     default:
       return state;
   }
