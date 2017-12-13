@@ -88,14 +88,8 @@ class ParameterItem extends Component {
   componentWillMount() {
     this.setState({ name: this.props.parameter.text });
     // console.log('mount')
-    // this.setState({ type: this.props.parameter.type });
-    this.setState({ type: 'Number' });
-    // this.setState({ name: this.props.parameter.parameterType });
+    this.setState({ type: this.props.parameter.type || 'Number' });
   }
-
-  // componentDidMount() {
-  //   this.setState({ name: this.props.parameter.parameterTypes });
-  // }
 
   handleClick() {
     // console.log('handleDoubleClick');

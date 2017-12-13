@@ -25,7 +25,7 @@ const styles = theme => ({
     width: 400,
   },
   descField: {
-    marginLeft: theme.spacing.unit,
+    marginLeft: theme.spacing.unit*7,
     marginRight: theme.spacing.unit,
     background: blueGrey[50],// #afbbc9
     width: 500,
@@ -83,7 +83,7 @@ class ConfigModuleHead extends Component {
     } else {
 
     }
-    // localStorage.setItem(this.state.name, JSON.stringify(this.state));
+    localStorage.setItem(this.state.name, JSON.stringify(this.state));
 
     //
     this.setState({ name: '' });
