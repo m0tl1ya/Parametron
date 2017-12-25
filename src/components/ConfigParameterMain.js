@@ -15,25 +15,25 @@ class ConfigParameterMain extends Component {
     this.state = {
       filter: SHOW_ALL,
     };
-    this.renderParameters = this.renderParameters.bind(this);
+    // this.renderParameters = this.renderParameters.bind(this);
   }
 
-  renderParameters() {
-    // console.log(this.props.parameters);
-    const parameterList = this.props.parameters.map(parameter => {
-      // console.log(parameter);
-      return (<ParameterItem
-              key={parameter.id}
-              parameter={ parameter }
-              actions={ this.props.actions }
-              />
-      );
-    });
-    return parameterList;
-  }
+  // renderParameters() {
+  //   // console.log(this.props.parameters);
+  //   const parameterList = this.props.parameters.map(parameter => {
+  //     // console.log(parameter);
+  //     return (<ParameterItem
+  //             key={parameter.id}
+  //             parameter={ parameter }
+  //             actions={ this.props.actions }
+  //             />
+  //     );
+  //   });
+  //   return parameterList;
+  // }
 
   render() {
-    const { classes, parameters, actions } = this.props;
+    const { parameters, actions } = this.props;
     const { filter } = this.state;
     // console.log(parameters)
     const filteredParameters = parameters.filter(PARAMETER_FILTERS[filter]);

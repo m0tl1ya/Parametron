@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 // import Layout from './Layout';
 import ProjectTable from './ProjectTable';
 import ConfigProject from './ConfigProject';
+import ViewModules from '../containers/ViewModules';
 import ConfigModule from '../containers/ConfigModule';
 import NavBar from './NavBar';
 
@@ -17,6 +18,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={ProjectTable} />
         <Route path="/project-table" component={ProjectTable} />
+        <Route path="/module-table" component={ViewModules} />
         <Route path="/config-project" component={ConfigProject} />
         <Route path="/config-module" component={ConfigModule} />
       </Switch>

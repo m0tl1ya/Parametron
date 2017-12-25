@@ -78,7 +78,7 @@ class NavBar extends Component {
                     <ListItemText primary="Projects" />
                 </ListItem>
               </Link>
-              <Link to="/config-project">
+              <Link to="/module-table">
                 <ListItem button>
                   <ListItemIcon>
                     <WebAssetIcon />

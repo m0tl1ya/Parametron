@@ -30,41 +30,38 @@ const styles = theme => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-
-
   flexGrow: {
     flex: '1 1 auto',
   },
-  spacer: {
-    flex: '1 1 100%',
-  },
 });
 
-class ModuleCard2 extends Component {
+class ModuleCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false,
+      name: this.props.name,
+      description: this.props.description,
+      updated: this.props.updated,
+      expanded: false
     };
-    this.handleExpandClick = this.handleExpandClick.bind(this);
+    this.handleExpandClick = this.handleExpandClick.bind(this)
   }
 
-  handleExpandClick() {
+  handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
-  }
+  };
 
   render() {
-    const { classes } = this.props;
+    const { classes, module } = this.props;
     return (
       <div>
         <Card>
-          <Toolbar>
-            <div className={classes.title}>
-              <Typography type="title">Training Module</Typography>
-              <div className={classes.description}>
-                Contain training params of VAE Contain training params of VAE
-              </div>
-            </div>
+          <CardHeader
+            title={this.state.name}
+            subheader={this.state.description}
+          >
+          </CardHeader>
+          <CardActions>
             <div className={classes.flexGrow} />
             <IconButton
                 className={classnames(classes.expand, {
@@ -76,9 +73,7 @@ class ModuleCard2 extends Component {
               >
                 <ExpandMoreIcon />
             </IconButton>
-            <div className={classes.actions}>
-            </div>
-          </Toolbar>
+          </CardActions>
 
           <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
             <ParameterTable />
@@ -90,9 +85,13 @@ class ModuleCard2 extends Component {
   }
 }
 
-ModuleCard2.propTypes = {
+ModuleCard.propTypes = {
   classes: PropTypes.object.isRequired,
+  name: PropTypes.object.isRequired,
+  description: PropTypes.object.isRequired,
+  updated: PropTypes.object.isRequired,
+  parameters: PropTypes.object.isRequired,
 };
 
 
-export default withStyles(styles)(ModuleCard2);
+export default withStyles(styles)(ModuleCard);

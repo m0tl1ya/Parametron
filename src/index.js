@@ -1,28 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+// import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
+// import thunkMiddleware from 'redux-thunk'
+// import { createLogger } from 'redux-logger'
+
+import configureStore from './store/index'
 import './index.css';
 import App from './components/App';
-import reducer from './reducers';
+// import rootReducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
-// import {
-//   BrowserRouter as Router,
-//   Route
-// } from 'react-router-dom'
-//
-// import Layout from './components/App';
 
-//
-//
-//
 
-//
-// const App = () => (
-//   <Router history={browserHistory} routes={routes} onUpdate={() => window.scrollTo(0, 0)} />
-// );
+import db from './lib/db';
 
-const store = createStore(reducer);
+db.open();
+
+const store = configureStore();
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();

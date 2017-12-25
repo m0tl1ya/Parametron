@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 
 import DiscardDialog from './DiscardDialog';
 
-
+import db from '../lib/db';
 
 const styles = theme => ({
   textField: {
@@ -83,7 +83,20 @@ class ConfigModuleHead extends Component {
     } else {
 
     }
-    localStorage.setItem(this.state.name, JSON.stringify(this.state));
+    // localStorage.setItem(this.state.name, JSON.stringify(this.state));
+    db.modules.put({
+      name: this.state.name,
+      description: this.state.description,
+      parameters: this.state.parameters,  //JSON.stringify(this.state.parameters),
+      updateAt: new Date()
+    });
+
+    db.modules
+    .toArray()
+    .then(function (module) {
+      console.log('ok');
+      console.log(module[0].parameters);
+    });
 
     //
     this.setState({ name: '' });
