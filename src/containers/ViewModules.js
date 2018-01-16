@@ -25,7 +25,7 @@ ViewModules.propTypes = {
 const mapStateToProps = state => ({
   modules: state.modules,
   hasError: state.getCommentsError,
-  isLoading: state.loadComments
+  isLoading: state.loadComments,
 });
 
 // console.log(ConfigModuleActions);

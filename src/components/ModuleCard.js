@@ -16,7 +16,7 @@ import ParameterTable from './ParameterTable';
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    maxWidth: 1000,
   },
   media: {
     height: 194,
@@ -55,25 +55,24 @@ class ModuleCard extends Component {
     const { classes, module } = this.props;
     return (
       <div>
-        <Card>
+        <Card className={classes.card}>
           <CardHeader
+            action={
+              <IconButton
+                  className={classnames(classes.expand, {
+                    [classes.expandOpen]: this.state.expanded,
+                  })}
+                  onClick={this.handleExpandClick}
+                  aria-expanded={this.state.expanded}
+                  aria-label="Show more"
+                >
+                  <ExpandMoreIcon />
+              </IconButton>
+            }
             title={this.state.name}
             subheader={this.state.description}
           >
           </CardHeader>
-          <CardActions>
-            <div className={classes.flexGrow} />
-            <IconButton
-                className={classnames(classes.expand, {
-                  [classes.expandOpen]: this.state.expanded,
-                })}
-                onClick={this.handleExpandClick}
-                aria-expanded={this.state.expanded}
-                aria-label="Show more"
-              >
-                <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
 
           <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
             <ParameterTable />
