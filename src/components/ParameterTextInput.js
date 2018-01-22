@@ -30,10 +30,11 @@ const styles = theme => ({
     flexWrap: 'wrap',
   }),
   textField: {
-    marginLeft: '2em',
+    width: '20em',
+    marginLeft: '0.2em',
+    // marginLeft: '2em',
     marginBottom: '0.9em',
     marginRight: theme.spacing.unit,
-    width: 300,
   },
 });
 

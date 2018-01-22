@@ -22,6 +22,7 @@ class DiscardDialog extends Component {
     };
     this.handleRequestOpen = this.handleRequestOpen.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.onDiscard = this.onDiscard.bind(this);
   }
 
   handleRequestOpen() {
@@ -31,6 +32,10 @@ class DiscardDialog extends Component {
   handleRequestClose() {
     // console.log('Dialig closed');
     this.setState({ open: false });
+  }
+
+  onDiscard() {
+    this.props.discard();
   }
 
   render() {
@@ -56,9 +61,12 @@ class DiscardDialog extends Component {
           </DialogContent>
           <DialogActions>
             <Link to="/project-table">
-            <Button color="primary">
-              Discard
-            </Button>
+              <Button
+                color="primary"
+                onClick={this.onDiscard}
+              >
+                  Discard
+              </Button>
             </Link>
             <Button onClick={this.handleRequestClose} color="primary" autoFocus>
               Cancel
@@ -72,6 +80,7 @@ class DiscardDialog extends Component {
 
 DiscardDialog.propTypes = {
   classes: PropTypes.object.isRequired,
+  discard: PropTypes.func.isRequired,
 };
 
 export default DiscardDialog;

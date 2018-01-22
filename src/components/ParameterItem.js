@@ -38,13 +38,15 @@ const styles = theme => ({
   },
   textField: {
     top: '0.5em',
+    bottom: '0.5em',
     marginLeft: '2em',
     marginRight: theme.spacing.unit,
-    width: 300,
+    width: '20em',
+    // paddingBottom: '0em',
   },
   selectField: {
     bottom: '0.5em',
-    marginLeft: theme.spacing.unit,
+    marginLeft: '15em',
     marginRight: theme.spacing.unit,
     width: '10em',
   },
@@ -158,7 +160,7 @@ class ParameterItem extends Component {
               // defaultValue: 'this.state.type',
               // value: this.state.type
             }}
-            // defaultValue={typeOfParameters}
+
             margin="normal"
           >
             {typeOfParameters.map(option => (
@@ -182,8 +184,8 @@ class ParameterItem extends Component {
     }
     return (
       <div>
-      {element}
-    </div>
+        {element}
+      </div>
     );
   }
 }

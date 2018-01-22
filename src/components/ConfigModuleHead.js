@@ -45,7 +45,8 @@ class ConfigModuleHead extends Component {
       parameters: this.props.parameters,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSave = this.handleSave.bind(this);  }
+    this.handleSave = this.handleSave.bind(this);
+    this.handleDiscard = this.handleDiscard.bind(this);  }
 
   // componentDidMount() {
   //   // this.setState({ parameters: this.props.parameters });
@@ -77,28 +78,31 @@ class ConfigModuleHead extends Component {
     if (this.props.parameters.length > 0) {
       if (true) {
         console.log(this.state);
-      } else {
       }
+      db.modules.put({
+        name: this.state.name,
+        description: this.state.description,
+        parameters: this.state.parameters,
+        updateAt: new Date()
+      });
+
+      db.modules
+      .toArray()
+      .then(function (module) {
+        console.log('ok');
+        console.log(module[0].parameters);
+      });
+
+      this.setState({ name: '' });
+      this.setState({ description: '' });
+      this.props.discardParameters();
 
     } else {
 
     }
-    // localStorage.setItem(this.state.name, JSON.stringify(this.state));
-    db.modules.put({
-      name: this.state.name,
-      description: this.state.description,
-      parameters: this.state.parameters,  //JSON.stringify(this.state.parameters),
-      updateAt: new Date()
-    });
+  }
 
-    db.modules
-    .toArray()
-    .then(function (module) {
-      console.log('ok');
-      console.log(module[0].parameters);
-    });
-
-    //
+  handleDiscard() {
     this.setState({ name: '' });
     this.setState({ description: '' });
     this.props.discardParameters();
@@ -111,7 +115,9 @@ class ConfigModuleHead extends Component {
     return (
       <div className="ConfigModuleHeader">
         <div>
-          <DiscardDialog />
+          <DiscardDialog
+            discard={this.handleDiscard}
+          />
           <TextField
             id="module-name"
             className={classes.textField}

@@ -1,49 +1,29 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import classnames from 'classnames';
-import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
+import ExpansionPanel, {
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+} from 'material-ui/ExpansionPanel';
+import Typography from 'material-ui/Typography';
 import Collapse from 'material-ui/transitions/Collapse';
 import IconButton from 'material-ui/IconButton';
-import Typography from 'material-ui/Typography';
-import Toolbar from 'material-ui/Toolbar';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
-import Checkbox from 'material-ui/Checkbox';
-import ModeEditIcon from 'material-ui-icons/ModeEdit';
+import Toolbar from 'material-ui/Toolbar';
 
 import ParameterTable from './ParameterTable';
 
 
 
 const styles = theme => ({
-  card: {
-    maxWidth: 1000,
+  root: {
+    width: '100%',
   },
-  editButton: {
-    marginTop: '2.0em',
-  },
-  // buttonBars: {
-  //   margin: '0.5em',
-  // },
-  media: {
-    height: 194,
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  flexGrow: {
-    flex: '1 1 auto',
-  },
-  moduleArea: {
-    padding: '1em',
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
   },
 });
 
@@ -66,23 +46,11 @@ class ModuleCard extends Component {
   render() {
     const { classes, module } = this.props;
     return (
-      <div className={classes.moduleArea}>
-
-        <Card className={classes.card}>
-          <div className={classes.buttonBars}>
-            <Checkbox
-                    checked={false}
-                    tabIndex={-1}
-                    disableRipple
-                  />
-            <Link to="/config-module">
-              <ModeEditIcon
-                className={classes.editButton}
-              />
-            </Link>
-
-          </div>
-
+      <div>
+        <ExpansionPanel className={classes.card}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography className={classes.heading}>Expansion Panel 1</Typography>
+        </ExpansionPanelSummary>
           <CardHeader
             action={
               <IconButton
@@ -107,7 +75,7 @@ class ModuleCard extends Component {
             </ParameterTable>
           </Collapse>
 
-        </Card>
+        </ExpansionPanel>
       </div>
     );
   }

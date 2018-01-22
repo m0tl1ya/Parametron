@@ -10,35 +10,40 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
+    paddingBottom: '1em'
   },
   table: {
     minWidth: 700,
   },
 });
 
-let counter = 0;
-function createData(name, type, value) {
-  counter += 1;
-  return { id: counter, name, type, value };
-}
+// let counter = 0;
+// function createData(name, type) {
+//   counter += 1;
+//   return { id: counter, name, type };
+// }
 
 const columnData = [
-  { id: 'parameterName', numeric: false, disablePadding: false, label: 'Parameter Name' },
-  { id: 'type', numeric: false, disablePadding: false, label: 'Type' },
-  { id: 'value', numeric: false, disablePadding: false, label: 'Value' },
+  {
+    id: 'parameterName', numeric: false, disablePadding: false, label: 'Parameter Name',
+  },
+  {
+    id: 'type', numeric: false, disablePadding: false, label: 'Type',
+  },
+  // { id: 'value', numeric: false, disablePadding: false, label: 'Value' },
 ];
 
-const data = [
-  createData('learning rate', 'number', 6.0),
-  createData('weight decay', 'number', 9.0),
-  createData('normalize', 'bool', 'false'),
-  createData('description', 'string', 'this is test'),
-
-];
+// const data = [
+//   createData('learning rate', 'number', 6.0),
+//   createData('weight decay', 'number', 9.0),
+//   createData('normalize', 'bool', 'false'),
+//   createData('description', 'string', 'this is test'),
+//
+// ];
 
 
 const ParameterTable = (props) => {
-  const { classes } = props;
+  const { classes, parameters } = props;
 
   return (
     <Paper className={classes.root}>
@@ -60,12 +65,11 @@ const ParameterTable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map(n => {
+          {parameters.map(parameter => {
           return (
-            <TableRow key={n.id}>
-              <TableCell>{n.name}</TableCell>
-              <TableCell numeric>{n.type}</TableCell>
-              <TableCell numeric>{n.value}</TableCell>
+            <TableRow key={parameter.id}>
+              <TableCell>{parameter.text}</TableCell>
+              <TableCell>{parameter.type}</TableCell>
             </TableRow>
           );
         })}
@@ -80,6 +84,7 @@ const ParameterTable = (props) => {
 // <TableCell>Value</TableCell>
 ParameterTable.propTypes = {
   classes: PropTypes.object.isRequired,
+  parameters: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(ParameterTable);
