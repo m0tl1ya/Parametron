@@ -3,6 +3,7 @@ export const DELETE_PARAMETER = 'DELETE_PARAMETER';
 export const EDIT_PARAMETER = 'EDIT_PARAMETER';
 export const EDIT_PARAMETER_TYPE = 'EDIT_PARAMETER_TYPE';
 export const DISCARD_PARAMETERS = 'DISCARD_PARAMETERS';
+export const GET_PARAMETERS = 'GET_PARAMETERS';
 
 export const addParameter = text => ({
   type: ADD_PARAMETER,
@@ -29,4 +30,9 @@ export const editParameterType = (id, parameterType) => ({
 
 export const discardParameters = () => ({
   type: DISCARD_PARAMETERS,
+});
+
+export const getParameters = array => ({
+  type: GET_PARAMETERS,
+  array,
 });

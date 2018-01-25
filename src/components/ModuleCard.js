@@ -6,6 +6,7 @@ import { withStyles } from 'material-ui/styles';
 import classnames from 'classnames';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import Collapse from 'material-ui/transitions/Collapse';
+import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import Toolbar from 'material-ui/Toolbar';
@@ -64,7 +65,7 @@ class ModuleCard extends Component {
   };
 
   render() {
-    const { classes, module } = this.props;
+    const { classes, parameters } = this.props;
     return (
       <div className={classes.moduleArea}>
 
@@ -73,12 +74,16 @@ class ModuleCard extends Component {
             <Checkbox
                     checked={false}
                     tabIndex={-1}
-                    disableRipple
+                    disableRipple={false}
                   />
             <Link to="/config-module">
-              <ModeEditIcon
+              <Button
+                color="secondary"
+                aria-label="edit"
                 className={classes.editButton}
-              />
+              >
+                <ModeEditIcon />
+              </Button>
             </Link>
 
           </div>
@@ -103,7 +108,7 @@ class ModuleCard extends Component {
 
           <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
             <ParameterTable
-              parameters={this.props.parameters}>
+              parameters={parameters}>
             </ParameterTable>
           </Collapse>
 
@@ -119,6 +124,7 @@ ModuleCard.propTypes = {
   description: PropTypes.object.isRequired,
   updated: PropTypes.object.isRequired,
   parameters: PropTypes.object.isRequired,
+  edit: PropTypes.func.isRequired,
 };
 
 

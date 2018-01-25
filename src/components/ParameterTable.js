@@ -84,7 +84,7 @@ const ParameterTable = (props) => {
 // <TableCell>Value</TableCell>
 ParameterTable.propTypes = {
   classes: PropTypes.object.isRequired,
-  parameters: PropTypes.object.isRequired,
+  parameters: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(ParameterTable);
