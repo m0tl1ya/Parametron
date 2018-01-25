@@ -4,7 +4,12 @@ import {
   EDIT_PARAMETER,
   EDIT_PARAMETER_TYPE,
   DISCARD_PARAMETERS,
+  GET_PARAMETERS,
 } from '../actions/configModuleActions';
+
+// import {
+//   EXTRACT_PARAMETERS,
+// } from '../actions/moduleListActions';
 
 const initialState = [
   // {
@@ -54,7 +59,14 @@ function parameters(state = initialState, action) {
     case DISCARD_PARAMETERS:
       return state.filter(parameter =>
         parameter.id === -1);
-
+    case GET_PARAMETERS:
+      // return action.array;
+      // console.log(GET_PARAMETERS);
+      // console.log(action.array);
+      // return state.filter(parameter =>
+      //   parameter.id !== -1);
+      state = [...action.array];
+      return state
 
     default:
       return state;

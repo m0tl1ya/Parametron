@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 
 import ModuleCard from './ModuleCard'
+import ConfigModule from '../containers/ConfigModule';
 
 import { SHOW_ALL } from '../actions/parameterFilters';
 
@@ -33,11 +34,23 @@ class ModuleList extends Component {
     this.state = {
       filter: SHOW_ALL,
       // modules: initModules,
+      // editMode: false,
     };
+    this.handleEditClick = this.handleEditClick.bind(this);
   }
+
+  // componentWillMount() {
+  //   this.setState({ editMode: false });
+  // }
 
   componentDidMount() {
     this.props.fetchData();
+  }
+
+  handleEditClick(data) {
+    // this.setState({ editMode: true });
+    // console.log(data);
+    this.props.getParameters(data);
   }
 
   render() {
@@ -53,7 +66,18 @@ class ModuleList extends Component {
       );
     }
     const filteredModules = this.props.modules.filter(MODULE_FILTERS[filter]);
-    // console.log(filteredParameters);
+    // console.log(filteredModules);
+    // console.log(filteredModules[1]);
+    // console.log(this.props.modules[1].parameters);
+    // if (this.state.editMode) {
+    //   return (
+    //     <div>
+    //       <ConfigModule
+    //         parameters={filteredModules[1].parameters}
+    //       />
+    //     </div>
+    //   )
+    // }
     return (
       <div>
         {filteredModules.map(module =>
@@ -63,6 +87,7 @@ class ModuleList extends Component {
             description={module.description}
             updated={module.updateAt}
             parameters={module.parameters}
+            extractParameters={this.handleEditClick}
           />)}
       </div>
     );
@@ -74,8 +99,10 @@ ModuleList.propTypes = {
   // modules: PropTypes.array.isRequired,
   fetchData: PropTypes.func.isRequired,
   modules: PropTypes.array.isRequired,
+  parameters: PropTypes.array.isRequired,
   hasError: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
+  getParameters: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(ModuleList);

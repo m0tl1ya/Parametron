@@ -15,6 +15,7 @@ import Checkbox from 'material-ui/Checkbox';
 import ModeEditIcon from 'material-ui-icons/ModeEdit';
 
 import ParameterTable from './ParameterTable';
+import ConfigModule from '../containers/ConfigModule';
 
 
 
@@ -55,66 +56,126 @@ class ModuleCard extends Component {
       name: this.props.name,
       description: this.props.description,
       updated: this.props.updated,
-      expanded: false
+      parameters: this.props.parameters,
+      expanded: false,
+      editMode: false
     };
     this.handleExpandClick = this.handleExpandClick.bind(this)
+    this.handleEditClick = this.handleEditClick.bind(this)
   }
 
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
   };
 
+  handleEditClick() {
+    // this.props.edit()
+    // console.log(e);
+    this.setState({ editMode: !this.state.editMode });
+    // const extractedParameters = e.target.value();
+    // console.log(extractedParameters);
+    // console.log('state parameters');
+    // console.log(this.state.parameters)
+
+    // this.setState({ parameters: this.state.parameters });
+    this.props.extractParameters(this.state.parameters)
+
+  }
+
   render() {
     const { classes, parameters } = this.props;
-    return (
-      <div className={classes.moduleArea}>
+    // console.log(parameters[0])
+    if (!this.state.editMode) {
+      return (
+        <div className={classes.moduleArea}>
 
-        <Card className={classes.card}>
-          <div className={classes.buttonBars}>
-            <Checkbox
-                    checked={false}
-                    tabIndex={-1}
-                    disableRipple={false}
-                  />
-            <Link to="/config-module">
+          <Card className={classes.card}>
+            <div className={classes.buttonBars}>
+              <Checkbox
+                      checked={false}
+                      tabIndex={-1}
+                      disableRipple={false}
+                    />
               <Button
                 color="secondary"
                 aria-label="edit"
                 className={classes.editButton}
+                onClick={this.handleEditClick}
               >
                 <ModeEditIcon />
               </Button>
-            </Link>
-
-          </div>
-
-          <CardHeader
-            action={
-              <IconButton
-                  className={classnames(classes.expand, {
-                    [classes.expandOpen]: this.state.expanded,
-                  })}
-                  onClick={this.handleExpandClick}
-                  aria-expanded={this.state.expanded}
-                  aria-label="Show more"
+              <Link to="/config-module">
+                <Button
+                  color="secondary"
+                  aria-label="edit"
+                  className={classes.editButton}
+                  onClick={this.handleEditClick}
                 >
-                  <ExpandMoreIcon />
-              </IconButton>
-            }
-            title={this.state.name}
-            subheader={this.state.description}
-          >
-          </CardHeader>
+                  <ModeEditIcon />
+                </Button>
+              </Link>
 
-          <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
-            <ParameterTable
-              parameters={parameters}>
-            </ParameterTable>
-          </Collapse>
+            </div>
 
-        </Card>
-      </div>
-    );
+            <CardHeader
+              action={
+                <IconButton
+                    className={classnames(classes.expand, {
+                      [classes.expandOpen]: this.state.expanded,
+                    })}
+                    onClick={this.handleExpandClick}
+                    aria-expanded={this.state.expanded}
+                    aria-label="Show more"
+                  >
+                    <ExpandMoreIcon />
+                </IconButton>
+              }
+              title={this.state.name}
+              subheader={this.state.description}
+            >
+            </CardHeader>
+
+            <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
+              <ParameterTable
+                parameters={parameters}>
+              </ParameterTable>
+            </Collapse>
+
+          </Card>
+        </div>
+      );
+
+    } else {
+      return (
+        <div className={classes.moduleArea}>
+
+          <Card className={classes.card}>
+            <div className={classes.buttonBars}>
+              <Checkbox
+                      checked={false}
+                      tabIndex={-1}
+                      disableRipple={false}
+                      onClick={this.handleEditClick}
+                    />
+              <Button
+                color="secondary"
+                aria-label="edit"
+                className={classes.editButton}
+                onClick={this.handleEditClick}
+              >
+                <ModeEditIcon />
+              </Button>
+
+
+            </div>
+
+            <ConfigModule
+              parameters={this.state.parameters}
+            />
+          </Card>
+        </div>
+      );
+    }
   }
 }
 
@@ -124,7 +185,8 @@ ModuleCard.propTypes = {
   description: PropTypes.object.isRequired,
   updated: PropTypes.object.isRequired,
   parameters: PropTypes.object.isRequired,
-  edit: PropTypes.func.isRequired,
+  // edit: PropTypes.func.isRequired,
+  extractParameters: PropTypes.func.isRequired,
 };
 
 
