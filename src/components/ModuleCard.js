@@ -53,12 +53,13 @@ class ModuleCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.id,
       name: this.props.name,
       description: this.props.description,
       updated: this.props.updated,
       parameters: this.props.parameters,
       expanded: false,
-      editMode: false
+      editMode: false,//false
     };
     this.handleExpandClick = this.handleExpandClick.bind(this)
     this.handleEditClick = this.handleEditClick.bind(this)
@@ -78,6 +79,7 @@ class ModuleCard extends Component {
     // console.log(this.state.parameters)
 
     // this.setState({ parameters: this.state.parameters });
+    this.props.editMode(this.state.id)
     this.props.extractParameters(this.state.parameters)
 
   }
@@ -104,17 +106,6 @@ class ModuleCard extends Component {
               >
                 <ModeEditIcon />
               </Button>
-              <Link to="/config-module">
-                <Button
-                  color="secondary"
-                  aria-label="edit"
-                  className={classes.editButton}
-                  onClick={this.handleEditClick}
-                >
-                  <ModeEditIcon />
-                </Button>
-              </Link>
-
             </div>
 
             <CardHeader
@@ -181,10 +172,12 @@ class ModuleCard extends Component {
 
 ModuleCard.propTypes = {
   classes: PropTypes.object.isRequired,
+  id: PropTypes.number.isRequired,
   name: PropTypes.object.isRequired,
   description: PropTypes.object.isRequired,
   updated: PropTypes.object.isRequired,
   parameters: PropTypes.object.isRequired,
+  editMode: PropTypes.bool.isRequired,
   // edit: PropTypes.func.isRequired,
   extractParameters: PropTypes.func.isRequired,
 };

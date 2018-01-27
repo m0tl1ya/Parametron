@@ -21,7 +21,6 @@ export const fetchModulesSuccess = modules => ({
   modules,
 });
 
-
 export function fetchModules() {
   return (dispatch) => {
     dispatch(loadModules(true));

@@ -40,8 +40,8 @@ class ConfigModuleHead extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      description: '',
+      name: this.props.title,  //'',
+      description: this.props.description, //'',
       parameters: this.props.parameters,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -66,8 +66,19 @@ class ConfigModuleHead extends Component {
   // }
 
   handleChange = name => event => {
-    // console.log('handleChange');
     this.setState({ [name]: event.target.value });
+
+  }
+
+  handleBlur = name => event => {
+    // this.setState({ [name]: event.target.value });
+    if (name == 'name') {
+      this.props.editTitle(event.target.value);
+    }
+    if (name == 'description') {
+      this.props.editDescription(event.target.value);
+    }
+
   }
 
   handleSave() {
@@ -95,6 +106,7 @@ class ConfigModuleHead extends Component {
 
       this.setState({ name: '' });
       this.setState({ description: '' });
+      this.props.discardHeaderInfo();
       this.props.discardParameters();
 
     } else {
@@ -103,8 +115,9 @@ class ConfigModuleHead extends Component {
   }
 
   handleDiscard() {
-    this.setState({ name: '' });
-    this.setState({ description: '' });
+    // this.setState({ name: '' });
+    // this.setState({ description: '' });
+    this.props.discardHeaderInfo()
     this.props.discardParameters();
   }
 
@@ -124,6 +137,7 @@ class ConfigModuleHead extends Component {
             label="Module Name"
             value={this.state.name}
             onChange={this.handleChange('name')}
+            onBlur={this.handleBlur('name')}
             fullWidth
             margin="normal"
           />
@@ -146,6 +160,7 @@ class ConfigModuleHead extends Component {
           }}
           value={this.state.description}
           onChange={this.handleChange('description')}
+          onBlur={this.handleBlur('description')}
           margin="normal"
         />
         </div>
@@ -161,7 +176,12 @@ class ConfigModuleHead extends Component {
 ConfigModuleHead.propTypes = {
   classes: PropTypes.object.isRequired,
   parameters: PropTypes.object.isRequired,
+  title: PropTypes.object.isRequired,
+  description: PropTypes.object.isRequired,
   discardParameters: PropTypes.func.isRequired,
+  editTitle: PropTypes.func.isRequired,
+  editDescription: PropTypes.func.isRequired,
+  discardHeaderInfo: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ConfigModuleHead);

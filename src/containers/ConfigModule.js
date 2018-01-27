@@ -7,31 +7,43 @@ import ConfigModuleHead from '../components/ConfigModuleHead';
 import ConfigParameterHeader from '../components/ConfigParameterHeader';
 import ConfigParameterMain from '../components/ConfigParameterMain';
 import * as ConfigModuleActions from '../actions/configModuleActions';
+import * as HeaderInfoActions from '../actions/headerInfoActions'
 
-const ConfigModule = ({ parameters, actions }) => (
+const ConfigModule = ({ parameters, headerInfo, actions }) => (
   <div>
     <ConfigModuleHead
       parameters={parameters}
-      discardParameters={actions.discardParameters}
+      title={headerInfo.title}
+      description={headerInfo.description}
+      discardParameters={actions.configModuleActions.discardParameters}
+      editTitle={actions.headerInfoActions.editTitle}
+      editDescription={actions.headerInfoActions.editDescription}
+      discardHeaderInfo={actions.headerInfoActions.discardHeaderInfo}
     />
-    <ConfigParameterHeader addParameter={actions.addParameter} />
-    <ConfigParameterMain parameters={parameters} actions={actions} />
+    <ConfigParameterHeader addParameter={actions.configModuleActions.addParameter} />
+    <ConfigParameterMain parameters={parameters} actions={actions.configModuleActions} />
   </div>
 );
 
 ConfigModule.propTypes = {
   parameters: PropTypes.array.isRequired,
+  headerInfo: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   parameters: state.parameters,
+  headerInfo: state.headerInfo,
 });
 
 // console.log(ConfigModuleActions);
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(ConfigModuleActions, dispatch),
+  // actions: bindActionCreators(ConfigModuleActions, dispatch),
+  actions: {
+    configModuleActions: bindActionCreators(ConfigModuleActions, dispatch),
+    headerInfoActions: bindActionCreators(HeaderInfoActions, dispatch),
+  },
 });
 
 
