@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 import ModuleList from '../components/ModuleList';
 import * as ModuleListActions from '../actions/moduleListActions';
 import * as ParameterActions from '../actions/configModuleActions';
-import * as ModuleListEditActions from '../actions/moduleListEditActions'
+import * as ModuleListEditActions from '../actions/moduleListEditActions';
+import * as HeaderInfoActions from '../actions/headerInfoActions';
 
 const ViewModules = ({ modules, editingId, hasError, isLoading, actions }) => (
   <div>
@@ -18,6 +19,7 @@ const ViewModules = ({ modules, editingId, hasError, isLoading, actions }) => (
       fetchData={actions.moduleListActions.fetchModules}
       editModule={actions.moduleListEditActions.editModule}
       getParameters={actions.parameterActions.getParameters}
+      getHeaderInfo={actions.headerInfoActions.getHeaderInfo}
     />
   </div>
 );
@@ -32,6 +34,7 @@ ViewModules.propTypes = {
 
 const mapStateToProps = state => ({
   modules: state.modules,
+  headerInfo: PropTypes.object.isRequired,
   // parameters: state.parameters,
   hasError: state.getModulesError,
   isLoading: state.loadModules,
@@ -47,6 +50,7 @@ const mapDispatchToProps = dispatch => ({
     moduleListActions: bindActionCreators(ModuleListActions, dispatch),
     moduleListEditActions: bindActionCreators(ModuleListEditActions, dispatch),
     parameterActions: bindActionCreators(ParameterActions, dispatch),
+    headerInfoActions: bindActionCreators(HeaderInfoActions, dispatch),
   },
 });
 

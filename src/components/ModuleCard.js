@@ -80,7 +80,11 @@ class ModuleCard extends Component {
 
     // this.setState({ parameters: this.state.parameters });
     this.props.editMode(this.state.id)
-    this.props.extractParameters(this.state.parameters)
+    this.props.extractModule(
+      this.state.name,
+      this.state.description,
+      this.state.parameters
+    )
 
   }
 
@@ -179,7 +183,7 @@ ModuleCard.propTypes = {
   parameters: PropTypes.object.isRequired,
   editMode: PropTypes.bool.isRequired,
   // edit: PropTypes.func.isRequired,
-  extractParameters: PropTypes.func.isRequired,
+  extractModule: PropTypes.func.isRequired,
 };
 
 

@@ -52,9 +52,10 @@ class ModuleList extends Component {
     this.setState({ editingId: nextProps.editingId });
   }
 
-  handleEditClick(data) {
+  handleEditClick(title, descriptioin, data) {
     // this.setState({ editMode: true });
     // console.log(data);
+    this.props.getHeaderInfo(title, descriptioin);
     this.props.getParameters(data);
   }
 
@@ -85,15 +86,20 @@ class ModuleList extends Component {
       const selectedModule = this.props.modules[editingId];
       // const filteredModules = this.props.modules.filter(MODULE_FILTERS[filter])
       return (
-        <ModuleCard
-          id={selectedModule.id}
-          name={selectedModule.name}
-          description={selectedModule.description}
-          updated={selectedModule.updateAt}
+        <ConfigModule
           parameters={selectedModule.parameters}
-          editMode={this.selctForEdit}
-          extractParameters={this.handleEditClick}
+          title={selectedModule.name}
+          description={selectedModule.description}
         />
+        // <ModuleCard
+        //   id={selectedModule.id}
+        //   name={selectedModule.name}
+        //   description={selectedModule.description}
+        //   updated={selectedModule.updateAt}
+        //   parameters={selectedModule.parameters}
+        //   editMode={this.selctForEdit}
+        //   extractParameters={this.handleEditClick}
+        // />
 
       );
     }
@@ -120,7 +126,7 @@ class ModuleList extends Component {
             updated={module.updateAt}
             parameters={module.parameters}
             editMode={this.selctForEdit}
-            extractParameters={this.handleEditClick}
+            extractModule={this.handleEditClick}
           />)}
       </div>
     );
@@ -132,13 +138,14 @@ ModuleList.propTypes = {
   // modules: PropTypes.array.isRequired,
   fetchData: PropTypes.func.isRequired,
   modules: PropTypes.array.isRequired,
+  editingId: PropTypes.number.isRequired,
   // editableParameters: PropTypes.array.isRequired,
   hasError: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
   // isEditing: PropTypes.bool.isRequired,
-  getParameters: PropTypes.func.isRequired,
   editModule: PropTypes.func.isRequired,
-  editingId: PropTypes.number.isRequired,
+  getParameters: PropTypes.func.isRequired,
+  getHeaderInfo: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ModuleList);

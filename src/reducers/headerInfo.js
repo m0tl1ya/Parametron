@@ -2,6 +2,7 @@ import {
   EDIT_TITLE,
   EDIT_DESCRIPTION,
   DISCARD_HEADER_INFO,
+  GET_HEADER_INFO,
 } from '../actions/headerInfoActions';
 
 
@@ -29,6 +30,12 @@ function headerInfo(state = initialState, action) {
 
     case DISCARD_HEADER_INFO:
       return initialState;
+
+    case GET_HEADER_INFO:
+      return {
+        title: action.title,
+        description: action.description,
+      };
 
     // case DISCARD_PARAMETERS:
     //   return state.filter(parameter =>

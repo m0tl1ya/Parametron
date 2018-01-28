@@ -7,14 +7,14 @@ import ConfigModuleHead from '../components/ConfigModuleHead';
 import ConfigParameterHeader from '../components/ConfigParameterHeader';
 import ConfigParameterMain from '../components/ConfigParameterMain';
 import * as ConfigModuleActions from '../actions/configModuleActions';
-import * as HeaderInfoActions from '../actions/headerInfoActions'
+import * as HeaderInfoActions from '../actions/headerInfoActions';
 
-const ConfigModule = ({ parameters, headerInfo, actions }) => (
+const ConfigModule = ({ parameters, title, description, actions }) => (
   <div>
     <ConfigModuleHead
       parameters={parameters}
-      title={headerInfo.title}
-      description={headerInfo.description}
+      title={title}
+      description={description}
       discardParameters={actions.configModuleActions.discardParameters}
       editTitle={actions.headerInfoActions.editTitle}
       editDescription={actions.headerInfoActions.editDescription}
@@ -27,13 +27,15 @@ const ConfigModule = ({ parameters, headerInfo, actions }) => (
 
 ConfigModule.propTypes = {
   parameters: PropTypes.array.isRequired,
-  headerInfo: PropTypes.object.isRequired,
+  title: PropTypes.object.isRequired,
+  description: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   parameters: state.parameters,
-  headerInfo: state.headerInfo,
+  title: state.headerInfo.title,
+  description: state.headerInfo.description,
 });
 
 // console.log(ConfigModuleActions);
