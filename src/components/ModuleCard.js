@@ -53,17 +53,27 @@ class ModuleCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.id,
-      name: this.props.name,
-      description: this.props.description,
-      updated: this.props.updated,
-      parameters: this.props.parameters,
+      // id: this.props.id,
+      // name: this.props.name,
+      // description: this.props.description,
+      // updated: this.props.updated,
+      // parameters: this.props.parameters,
       expanded: false,
       editMode: false,//false
     };
     this.handleExpandClick = this.handleExpandClick.bind(this)
     this.handleEditClick = this.handleEditClick.bind(this)
   }
+
+  //
+  // componentWillReceiveProps(nextProps) {
+  //   console.log(nextProps);
+  //
+  //   this.setState({ name: nextProps.name });
+  //   this.setState({ description: nextProps.description });
+  //   this.setState({ updated: nextProps.updated });
+  //   this.setState({ parameters: nextProps.parameters });
+  // }
 
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
@@ -73,17 +83,23 @@ class ModuleCard extends Component {
     // this.props.edit()
     // console.log(e);
     this.setState({ editMode: !this.state.editMode });
-    // const extractedParameters = e.target.value();
-    // console.log(extractedParameters);
-    // console.log('state parameters');
-    // console.log(this.state.parameters)
+
+    // log new state
+    console.log(this.props.name);
+    console.log(this.props.description);
+    console.log(this.props.parameters);
+
+    // log old state
+    // console.log(this.state.name);
+    // console.log(this.state.description);
+    // console.log(this.state.parameters);
 
     // this.setState({ parameters: this.state.parameters });
-    this.props.editMode(this.state.id)
+    this.props.editModeOn(this.props.id)
     this.props.extractModule(
-      this.state.name,
-      this.state.description,
-      this.state.parameters
+      this.props.name,
+      this.props.description,
+      this.props.parameters
     )
 
   }
@@ -102,14 +118,16 @@ class ModuleCard extends Component {
                       tabIndex={-1}
                       disableRipple={false}
                     />
-              <Button
-                color="secondary"
-                aria-label="edit"
-                className={classes.editButton}
-                onClick={this.handleEditClick}
-              >
-                <ModeEditIcon />
-              </Button>
+              <Link to="/edit-module">
+                <Button
+                  color="secondary"
+                  aria-label="edit"
+                  className={classes.editButton}
+                  onClick={this.handleEditClick}
+                >
+                  <ModeEditIcon />
+                </Button>
+              </Link>
             </div>
 
             <CardHeader
@@ -125,8 +143,8 @@ class ModuleCard extends Component {
                     <ExpandMoreIcon />
                 </IconButton>
               }
-              title={this.state.name}
-              subheader={this.state.description}
+              title={this.props.name}
+              subheader={this.props.description}
             >
             </CardHeader>
 
@@ -144,30 +162,6 @@ class ModuleCard extends Component {
       return (
         <div className={classes.moduleArea}>
 
-          <Card className={classes.card}>
-            <div className={classes.buttonBars}>
-              <Checkbox
-                      checked={false}
-                      tabIndex={-1}
-                      disableRipple={false}
-                      onClick={this.handleEditClick}
-                    />
-              <Button
-                color="secondary"
-                aria-label="edit"
-                className={classes.editButton}
-                onClick={this.handleEditClick}
-              >
-                <ModeEditIcon />
-              </Button>
-
-
-            </div>
-
-            <ConfigModule
-              parameters={this.state.parameters}
-            />
-          </Card>
         </div>
       );
     }
@@ -181,7 +175,7 @@ ModuleCard.propTypes = {
   description: PropTypes.object.isRequired,
   updated: PropTypes.object.isRequired,
   parameters: PropTypes.object.isRequired,
-  editMode: PropTypes.bool.isRequired,
+  editModeOn: PropTypes.bool.isRequired,
   // edit: PropTypes.func.isRequired,
   extractModule: PropTypes.func.isRequired,
 };

@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+  Link,
+} from 'react-router-dom'
+
 
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
@@ -10,10 +14,9 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import { blueGrey } from 'material-ui/colors';
-import { Link } from 'react-router-dom';
 
 
-import DiscardDialog from './DiscardDialog';
+import BackDialog from './BackDialog';
 
 import db from '../lib/db';
 
@@ -32,11 +35,13 @@ const styles = theme => ({
   },
   button: {
     top: '0.0em',
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
   }
 });
 
 
-class ConfigModuleHead extends Component {
+class EditModuleHead extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,14 +51,10 @@ class ConfigModuleHead extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.handleSaveAsNew = this.handleSaveAsNew.bind(this);
     this.handleDiscard = this.handleDiscard.bind(this);
+    this.handleDelete = this.handleDelete.bind(this)
   }
-
-  // componentDidMount() {
-  //   // this.setState({ parameters: this.props.parameters });
-  //   // console.log(this.state);
-  //   console.log("component mounted")
-  // }
 
   componentWillReceiveProps(nextProps) {
     console.log(nextProps);
@@ -61,12 +62,6 @@ class ConfigModuleHead extends Component {
     // this.setState({ description: nextProps.description });
     this.setState({ parameters: nextProps.parameters });
   }
-
-  // componentWillUnmount() {
-  //   this.setState({ name: '' });
-  //   this.setState({ description: '' });
-  //   this.props.discardParameters();
-  // }
 
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
@@ -85,10 +80,27 @@ class ConfigModuleHead extends Component {
   }
 
   handleSave() {
-    // console.log(this.props.parameters);
-    // this.setState({ parameters: this.props.parameters });
+    console.log(this.props.moduleId);
+    if (this.props.title.length > 0 && this.props.parameters.length > 0) {
+      db.modules.update(this.props.moduleId + 1, {
+        name: this.state.name,
+        description: this.state.description,
+        parameters: this.state.parameters,
+        updateAt: new Date()
+      });
+      this.handleDiscard();
 
-    // console.log(this.props.parameters.length);
+      // this.setState({ name: '' });
+      // this.setState({ description: '' });
+      // this.props.discardHeaderInfo();
+      // this.props.discardParameters();
+
+    } else {
+      // console.log('not save');
+    }
+  }
+
+  handleSaveAsNew() {
     if (this.props.title.length > 0 && this.props.parameters.length > 0) {
       db.modules.put({
         name: this.state.name,
@@ -96,27 +108,23 @@ class ConfigModuleHead extends Component {
         parameters: this.state.parameters,
         updateAt: new Date()
       });
-
-      // db.modules
-      // .toArray()
-      // .then(function (module) {
-      //   console.log('ok');
-      //   console.log(module[0].parameters);
-      // });
-
-      this.setState({ name: '' });
-      this.setState({ description: '' });
-      this.props.discardHeaderInfo();
-      this.props.discardParameters();
+      this.handleDiscard();
 
     } else {
-      console.log('not save');
+      // console.log('not save');
     }
+
+  }
+
+  handleDelete() {
+    db.modules.delete(this.props.moduleId + 1);
+    console.log(this.props.moduleId);
+    this.handleDiscard();
   }
 
   handleDiscard() {
-    // this.setState({ name: '' });
-    // this.setState({ description: '' });
+    this.setState({ name: '' });
+    this.setState({ description: '' });
     this.props.discardHeaderInfo()
     this.props.discardParameters();
   }
@@ -128,7 +136,7 @@ class ConfigModuleHead extends Component {
     return (
       <div className="ConfigModuleHeader">
         <div>
-          <DiscardDialog
+          <BackDialog
             discard={this.handleDiscard}
           />
           <TextField
@@ -141,14 +149,38 @@ class ConfigModuleHead extends Component {
             fullWidth
             margin="normal"
           />
+        <Link to="/module-table">
+            <Button
+              raised
+              color="primary"
+              className={classes.button}
+              onClick={this.handleSave}
+            >
+            Save
+            </Button>
+          </Link>
+
+          <span />
+          <Link to="/module-table">
           <Button
             raised
             color="primary"
             className={classes.button}
-            onClick={this.handleSave}
+            onClick={this.handleSaveAsNew}
           >
-          Save
+          Save as New
           </Button>
+          </Link>
+          <Link to="/module-table">
+          <Button
+            raised
+            color="primary"
+            className={classes.button}
+            onClick={this.handleDelete}
+          >
+            <DeleteIcon />
+          </Button>
+          </Link>
         </div>
         <div>
           <TextField
@@ -173,15 +205,16 @@ class ConfigModuleHead extends Component {
   }
 }
 
-ConfigModuleHead.propTypes = {
+EditModuleHead.propTypes = {
   classes: PropTypes.object.isRequired,
-  parameters: PropTypes.object.isRequired,
+  moduleId: PropTypes.number.isRequired,
   title: PropTypes.object.isRequired,
   description: PropTypes.object.isRequired,
+  parameters: PropTypes.object.isRequired,
   discardParameters: PropTypes.func.isRequired,
   editTitle: PropTypes.func.isRequired,
   editDescription: PropTypes.func.isRequired,
   discardHeaderInfo: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(ConfigModuleHead);
+export default withStyles(styles)(EditModuleHead);

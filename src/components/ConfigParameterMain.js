@@ -18,23 +18,11 @@ class ConfigParameterMain extends Component {
     // this.renderParameters = this.renderParameters.bind(this);
   }
 
-  // renderParameters() {
-  //   // console.log(this.props.parameters);
-  //   const parameterList = this.props.parameters.map(parameter => {
-  //     // console.log(parameter);
-  //     return (<ParameterItem
-  //             key={parameter.id}
-  //             parameter={ parameter }
-  //             actions={ this.props.actions }
-  //             />
-  //     );
-  //   });
-  //   return parameterList;
-  // }
 
   render() {
     const { parameters, actions } = this.props;
     const { filter } = this.state;
+
     // console.log(parameters)
     const filteredParameters = parameters.filter(PARAMETER_FILTERS[filter]);
     // console.log(filteredParameters);

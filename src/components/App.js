@@ -8,6 +8,7 @@ import ProjectTable from './ProjectTable';
 import ConfigProject from './ConfigProject';
 import ViewModules from '../containers/ViewModules';
 import ConfigModule from '../containers/ConfigModule';
+import EditModule from '../containers/EditModule';
 import NavBar from './NavBar';
 
 
@@ -21,6 +22,7 @@ const App = () => (
         <Route path="/module-table" component={ViewModules} />
         <Route path="/config-project" component={ConfigProject} />
         <Route path="/config-module" component={ConfigModule} />
+        <Route path="/edit-module" component={EditModule} />
       </Switch>
     </div>
   </BrowserRouter>

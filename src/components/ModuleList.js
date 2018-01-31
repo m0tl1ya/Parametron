@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 
 import ModuleCard from './ModuleCard'
-import ConfigModule from '../containers/ConfigModule';
+import EditModule from '../containers/EditModule';
 
 import { SHOW_ALL, SHOW_SELECTED } from '../actions/parameterFilters';
 
@@ -31,7 +31,8 @@ class ModuleList extends Component {
       filter: SHOW_ALL,
       // modules: initModules,
       // editingModuleCard: this.props.isEditing,
-      editingId: this.props.editingId
+      editingId: this.props.editingId,
+      modules: this.props.modules,
     };
     this.handleEditClick = this.handleEditClick.bind(this);
     this.selctForEdit = this.selctForEdit.bind(this);
@@ -39,17 +40,20 @@ class ModuleList extends Component {
 
   componentWillMount() {
     this.setState({ filter: SHOW_ALL });
-    this.setState({ editingId: -1 });
-    // this.props.editModule(-1);
+    // this.setState({ editingId: -1 });
+    this.props.editModule(-1);
+    this.props.fetchData();
+    // this.props.fetchData();
   }
 
   componentDidMount() {
-    this.props.fetchData();
-    this.props.editModule(-1);
+    // this.props.fetchData();
+    // this.props.editModule(-1);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({ editingId: nextProps.editingId });
+    this.setState({ modules: nextProps.modules });
   }
 
   handleEditClick(title, descriptioin, data) {
@@ -83,27 +87,30 @@ class ModuleList extends Component {
       );
     }
     if (editingId !== -1) {
-      const selectedModule = this.props.modules[editingId];
-      // const filteredModules = this.props.modules.filter(MODULE_FILTERS[filter])
-      return (
-        <ConfigModule
-          parameters={selectedModule.parameters}
-          title={selectedModule.name}
-          description={selectedModule.description}
-        />
-        // <ModuleCard
-        //   id={selectedModule.id}
-        //   name={selectedModule.name}
-        //   description={selectedModule.description}
-        //   updated={selectedModule.updateAt}
-        //   parameters={selectedModule.parameters}
-        //   editMode={this.selctForEdit}
-        //   extractParameters={this.handleEditClick}
-        // />
-
-      );
+      // const selectedModule = this.state.modules[editingId];
+      // const selectedModule = this.state.modules.filter(MODULE_FILTERS[filter])
+      // return (
+      //   <EditModule
+      //     moduleId={editingId}
+      //     parameters={selectedModule.parameters}
+      //     title={selectedModule.name}
+      //     description={selectedModule.description}
+      //   />
+      //
+      //
+      //   // <ModuleCard
+      //   //   id={selectedModule.id}
+      //   //   name={selectedModule.name}
+      //   //   description={selectedModule.description}
+      //   //   updated={selectedModule.updateAt}
+      //   //   parameters={selectedModule.parameters}
+      //   //   editMode={this.selctForEdit}
+      //   //   extractParameters={this.handleEditClick}
+      //   // />
+      //
+      // );
     }
-    const filteredModules = this.props.modules.filter(MODULE_FILTERS[filter])
+    const filteredModules = this.state.modules.filter(MODULE_FILTERS[filter])
     // console.log(filteredModules);
     // console.log(filteredModules[1]);
     // console.log(this.props.modules[1].parameters);
@@ -125,7 +132,7 @@ class ModuleList extends Component {
             description={module.description}
             updated={module.updateAt}
             parameters={module.parameters}
-            editMode={this.selctForEdit}
+            editModeOn={this.selctForEdit}
             extractModule={this.handleEditClick}
           />)}
       </div>
