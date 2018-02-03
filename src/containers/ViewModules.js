@@ -18,6 +18,8 @@ const ViewModules = ({ modules, editingId, hasError, isLoading, actions }) => (
       isLoading={isLoading}
       fetchData={actions.moduleListActions.fetchModules}
       editModule={actions.moduleListEditActions.editModule}
+      selectModule={actions.moduleListEditActions.selectModule}
+      untickModule={actions.moduleListEditActions.untickModule}
       getParameters={actions.parameterActions.getParameters}
       getHeaderInfo={actions.headerInfoActions.getHeaderInfo}
     />

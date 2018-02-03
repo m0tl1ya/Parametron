@@ -35,13 +35,14 @@ class ModuleList extends Component {
       modules: this.props.modules,
     };
     this.handleEditClick = this.handleEditClick.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
     this.selctForEdit = this.selctForEdit.bind(this);
   }
 
   componentWillMount() {
     this.setState({ filter: SHOW_ALL });
     // this.setState({ editingId: -1 });
-    this.props.editModule(-1);
+    this.props.editModule(-100);
     this.props.fetchData();
     // this.props.fetchData();
   }
@@ -54,6 +55,14 @@ class ModuleList extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({ editingId: nextProps.editingId });
     this.setState({ modules: nextProps.modules });
+  }
+
+  handleSelect(id, newChecked) {
+    if (newChecked) {
+      this.props.selectModule(id);
+    } else {
+      this.props.untickModule(id);
+    }
   }
 
   handleEditClick(title, descriptioin, data) {
@@ -132,6 +141,7 @@ class ModuleList extends Component {
             description={module.description}
             updated={module.updateAt}
             parameters={module.parameters}
+            selectedOn={this.handleSelect}
             editModeOn={this.selctForEdit}
             extractModule={this.handleEditClick}
           />)}
@@ -151,6 +161,8 @@ ModuleList.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   // isEditing: PropTypes.bool.isRequired,
   editModule: PropTypes.func.isRequired,
+  selectModule: PropTypes.func.isRequired,
+  untickModule: PropTypes.func.isRequired,
   getParameters: PropTypes.func.isRequired,
   getHeaderInfo: PropTypes.func.isRequired,
 };

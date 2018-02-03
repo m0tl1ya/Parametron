@@ -1,10 +1,13 @@
 import {
   EDIT_MODULE,
+  SELECT_MODULE,
+  UNTICK_MODULE,
 } from '../actions/moduleListEditActions';
 
 
 const initialState = {
-  id: -1,
+  id: -100,
+  selected: [],
 };
 
 
@@ -13,6 +16,18 @@ function idManager(state = initialState, action) {
     case EDIT_MODULE:
       return {
         id: action.id,
+        selected: state.selected,
+      };
+    case SELECT_MODULE:
+      return {
+        id: state.id,
+        selected: state.selected.concat(action.id),
+      };
+    case UNTICK_MODULE:
+      return {
+        id: state.id,
+        selected: state.selected.filter(id =>
+          id !== action.id),
       };
     default:
       return state;
