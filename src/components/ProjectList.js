@@ -71,7 +71,6 @@ class ProjectList extends Component {
 }
 
 ProjectList.propTypes = {
-  classes: PropTypes.objectOf.isRequired,
   fetchData: PropTypes.func.isRequired,
   projects: PropTypes.arrayOf.isRequired,
   hasError: PropTypes.bool.isRequired,

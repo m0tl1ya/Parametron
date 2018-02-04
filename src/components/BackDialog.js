@@ -39,8 +39,6 @@ class BackDialog extends Component {
   }
 
   render() {
-    const { classes } = this.props;
-
     return (
       <span>
         <IconButton
@@ -60,7 +58,7 @@ class BackDialog extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Link to="/module-table">
+            <Link to="/module-list">
               <Button
                 color="primary"
                 onClick={this.onDiscard}
@@ -79,7 +77,6 @@ class BackDialog extends Component {
 }
 
 BackDialog.propTypes = {
-  classes: PropTypes.object.isRequired,
   discard: PropTypes.func.isRequired,
 };
 

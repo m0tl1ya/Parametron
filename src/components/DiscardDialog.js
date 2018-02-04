@@ -39,8 +39,6 @@ class DiscardDialog extends Component {
   }
 
   render() {
-    const { classes } = this.props;
-
     return (
       <span>
         <IconButton
@@ -60,7 +58,7 @@ class DiscardDialog extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Link to="/project-table">
+            <Link to="/project-list">
               <Button
                 color="primary"
                 onClick={this.onDiscard}
@@ -79,7 +77,6 @@ class DiscardDialog extends Component {
 }
 
 DiscardDialog.propTypes = {
-  classes: PropTypes.object.isRequired,
   discard: PropTypes.func.isRequired,
 };
 

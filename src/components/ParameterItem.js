@@ -198,8 +198,8 @@ class ParameterItem extends Component {
 
 
 ParameterItem.propTypes = {
-  classes: PropTypes.object.isRequired,
-  parameter: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf.isRequired,
+  parameter: PropTypes.objectOf.isRequired,
   editParameter: PropTypes.func.isRequired,
   deleteParameter: PropTypes.func.isRequired,
 };

@@ -5,7 +5,7 @@ import { withStyles } from 'material-ui/styles';
 
 import ModuleCard from './ModuleCard';
 
-import { SHOW_ALL, SHOW_SELECTED } from '../actions/parameterFilters';
+// import { SHOW_ALL, SHOW_SELECTED } from '../actions/parameterFilters';
 
 
 const styles = theme => ({
@@ -27,10 +27,10 @@ class ModuleList extends Component {
     super(props);
 
     this.state = {
-      filter: SHOW_ALL,
+      // filter: SHOW_ALL,
       // modules: initModules,
       // editingModuleCard: this.props.isEditing,
-      editingId: this.props.editingId,
+      // editingId: this.props.editingId,
       modules: this.props.modules,
     };
     this.handleEditClick = this.handleEditClick.bind(this);
@@ -39,7 +39,7 @@ class ModuleList extends Component {
   }
 
   componentWillMount() {
-    this.setState({ filter: SHOW_ALL });
+    // this.setState({ filter: SHOW_ALL });
     // this.setState({ editingId: -1 });
     this.props.editModule(-100);
     this.props.fetchData();
@@ -52,7 +52,7 @@ class ModuleList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ editingId: nextProps.editingId });
+    // this.setState({ editingId: nextProps.editingId });
     this.setState({ modules: nextProps.modules });
   }
 
@@ -78,11 +78,11 @@ class ModuleList extends Component {
   }
 
   render() {
-    const { filter, editingId } = this.state;
-    const MODULE_FILTERS = {
-      [SHOW_ALL]: () => true,
-      [SHOW_SELECTED]: (module) => module.id == editingId,
-    };
+    // const { editingId } = this.state;
+    // const MODULE_FILTERS = {
+    //   [SHOW_ALL]: () => true,
+    //   [SHOW_SELECTED]: (module) => module.id == editingId,
+    // };
     // console.log(editingId);
     if (this.props.hasError) {
       return (
@@ -115,15 +115,13 @@ class ModuleList extends Component {
 }
 
 ModuleList.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf.isRequired,
   // modules: PropTypes.array.isRequired,
   fetchData: PropTypes.func.isRequired,
-  modules: PropTypes.array.isRequired,
-  editingId: PropTypes.number.isRequired,
-  // editableParameters: PropTypes.array.isRequired,
+  modules: PropTypes.arrayOf.isRequired,
+  // editingId: PropTypes.number.isRequired,
   hasError: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  // isEditing: PropTypes.bool.isRequired,
   editModule: PropTypes.func.isRequired,
   selectModule: PropTypes.func.isRequired,
   untickModule: PropTypes.func.isRequired,

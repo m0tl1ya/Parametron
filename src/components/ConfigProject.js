@@ -34,19 +34,19 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    background: blueGrey[50],// #afbbc9
+    background: blueGrey[50], // #afbbc9
     width: 400,
   },
   descField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    background: blueGrey[50],// #afbbc9
+    background: blueGrey[50], // #afbbc9
     width: 500,
   },
   addButton: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-  }
+  },
 });
 
 
@@ -76,8 +76,11 @@ class ConfigProject extends Component {
     return (
       <div className="ConfigProject">
         <div className="ConfigProjectHeader">
-          <IconButton className={classes.button} aria-label="Delete"
-                      onClick={this.handleOpen}>
+          <IconButton
+            className={classes.button}
+            aria-label="Delete"
+            onClick={this.handleOpen}
+          >
             <ClearIcon />
           </IconButton>
           <Dialog open={this.state.isDialogOpen} onRequestClose={this.handleRequestClose}>
@@ -115,19 +118,21 @@ class ConfigProject extends Component {
           </Tabs>
           {value === 'one' && <TabContainer>Item One</TabContainer>}
           {value === 'two' && <TabContainer>Item Two</TabContainer>}
-          {value === 'three' && <TabContainer>
-            <form>
-              <TextField
-              id="full-width"
-              label="Description"
-              className={classes.descField}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              margin="normal"
-            />
-            </form>
-          </TabContainer>}
+          {value === 'three' &&
+            <TabContainer>
+              <form>
+                <TextField
+                  id="full-width"
+                  label="Description"
+                  className={classes.descField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  margin="normal"
+                />
+              </form>
+            </TabContainer>
+        }
 
 
         </div>

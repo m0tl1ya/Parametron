@@ -37,25 +37,9 @@ function headerInfo(state = initialState, action) {
         description: action.description,
       };
 
-    // case DISCARD_PARAMETERS:
-    //   return state.filter(parameter =>
-    //     parameter.id === -1);
-    // case GET_PARAMETERS:
-    //   state = [...action.array];
-    //   return state
-
     default:
       return state;
   }
 }
 
 export default headerInfo;
-
-// const initialState = [
-//   {
-//     title: 'Training-Settings',
-//     paramters: [],
-//     paramterType: [],
-//     description: 'This module provides hyperparameter of training.',
-//   },
-// ];

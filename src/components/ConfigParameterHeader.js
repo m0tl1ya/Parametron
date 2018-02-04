@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import ParameterTextInput from './ParameterTextInput'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ParameterTextInput from './ParameterTextInput';
 
 class ConfigParameterHeader extends Component {
   constructor(props) {

@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-
-import Icon from 'material-ui/Icon';
-import IconButton from 'material-ui/IconButton';
-import DeleteIcon from 'material-ui-icons/Delete';
-import ClearIcon from 'material-ui-icons/Clear';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
@@ -153,9 +148,9 @@ class ModuleListToolbar extends Component {
 }
 
 ModuleListToolbar.propTypes = {
-  classes: PropTypes.object.isRequired,
-  modules: PropTypes.array.isRequired,
-  selectedIds: PropTypes.array.isRequired,
+  classes: PropTypes.objectOf.isRequired,
+  modules: PropTypes.arrayOf.isRequired,
+  selectedIds: PropTypes.arrayOf.isRequired,
   reset: PropTypes.func.isRequired,
 };
 

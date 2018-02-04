@@ -4,18 +4,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import { withStyles } from 'material-ui/styles';
-
-import Icon from 'material-ui/Icon';
-import IconButton from 'material-ui/IconButton';
-import ClearIcon from 'material-ui-icons/Clear';
-import Button from 'material-ui/Button';
-
 import TextField from 'material-ui/TextField';
-import Divider from 'material-ui/Divider';
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import { MenuItem } from 'material-ui/Menu';
-import Select from 'material-ui/Select';
 
 import Paper from 'material-ui/Paper';
 
@@ -71,7 +60,6 @@ class ParameterTextInput extends Component {
   }
 
   handleBlur(e) { // in editing parameter
-    // console.log('handleBlur');
     if (!this.props.newParameter) {
       this.props.onSave(e.target.value);
     }
@@ -106,12 +94,12 @@ class ParameterTextInput extends Component {
 }
 
 ParameterTextInput.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf.isRequired,
   onSave: PropTypes.func.isRequired,
-  text: PropTypes.string,
-  placeholder: PropTypes.string,
-  editing: PropTypes.bool,
-  newParameter: PropTypes.bool
+  text: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  editing: PropTypes.bool.isRequired,
+  newParameter: PropTypes.bool.isRequired,
 };
 
 export default withStyles(styles)(ParameterTextInput);

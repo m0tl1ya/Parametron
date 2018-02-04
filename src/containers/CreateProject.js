@@ -26,12 +26,12 @@ const CreateProject = ({ modules, hasError, isLoading, selectedIds, title, descr
 );
 
 CreateProject.propTypes = {
-  modules: PropTypes.array.isRequired,
+  modules: PropTypes.arrayOf.isRequired,
   // title: PropTypes.object.isRequired,
   // description: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
-  title: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
+  actions: PropTypes.objectOf.isRequired,
+  title: PropTypes.objectOf.isRequired,
+  description: PropTypes.objectOf.isRequired,
 };
 
 const mapStateToProps = state => ({

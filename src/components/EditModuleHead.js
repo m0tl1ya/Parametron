@@ -149,7 +149,7 @@ class EditModuleHead extends Component {
             fullWidth
             margin="normal"
           />
-        <Link to="/module-table">
+        <Link to="/module-list">
             <Button
               raised
               color="primary"
@@ -161,7 +161,7 @@ class EditModuleHead extends Component {
           </Link>
 
           <span />
-          <Link to="/module-table">
+          <Link to="/module-list">
           <Button
             raised
             color="primary"
@@ -171,7 +171,7 @@ class EditModuleHead extends Component {
           Save as New
           </Button>
           </Link>
-          <Link to="/module-table">
+          <Link to="/module-list">
           <Button
             raised
             color="primary"
@@ -206,11 +206,11 @@ class EditModuleHead extends Component {
 }
 
 EditModuleHead.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf.isRequired,
   moduleId: PropTypes.number.isRequired,
-  title: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
-  parameters: PropTypes.object.isRequired,
+  title: PropTypes.objectOf.isRequired,
+  description: PropTypes.objectOf.isRequired,
+  parameters: PropTypes.objectOf.isRequired,
   discardParameters: PropTypes.func.isRequired,
   editTitle: PropTypes.func.isRequired,
   editDescription: PropTypes.func.isRequired,

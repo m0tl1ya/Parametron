@@ -23,7 +23,6 @@ const ViewProjects = ({ projects, hasError, isLoading, actions }) => (
 
 ViewProjects.propTypes = {
   projects: PropTypes.arrayOf.isRequired,
-  // parameters: PropTypes.array.isRequired,
   actions: PropTypes.objectOf.isRequired,
   hasError: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
@@ -31,14 +30,9 @@ ViewProjects.propTypes = {
 
 const mapStateToProps = state => ({
   projects: state.projects,
-  // headerInfo: PropTypes.object.isRequired,
-  // parameters: state.parameters,
   hasError: state.getProjectsError,
   isLoading: state.loadProjects,
-  // isEditing: state.editModule,
 });
-
-// console.log(ConfigModuleActions);
 
 const mapDispatchToProps = dispatch => ({
   actions: {

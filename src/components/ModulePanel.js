@@ -4,15 +4,8 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import classnames from 'classnames';
-import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
-import Collapse from 'material-ui/transitions/Collapse';
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
-import Toolbar from 'material-ui/Toolbar';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
-import Checkbox from 'material-ui/Checkbox';
-import ModeEditIcon from 'material-ui-icons/ModeEdit';
 import ExpansionPanel, {
   ExpansionPanelDetails,
   ExpansionPanelSummary,
@@ -80,12 +73,12 @@ class ModulePanel extends Component {
 }
 
 ModulePanel.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf.isRequired,
   id: PropTypes.number.isRequired,
-  name: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
-  updated: PropTypes.object.isRequired,
-  parameters: PropTypes.object.isRequired,
+  name: PropTypes.objectOf.isRequired,
+  description: PropTypes.objectOf.isRequired,
+  updated: PropTypes.objectOf.isRequired,
+  parameters: PropTypes.objectOf.isRequired,
 };
 
 

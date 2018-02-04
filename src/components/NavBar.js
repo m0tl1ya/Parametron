@@ -40,7 +40,7 @@ const styles = theme => ({
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {open: false};
+    this.state = { open: false };
     this.handleDrawer = this.handleDrawer.bind(this);
   }
 
@@ -54,8 +54,12 @@ class NavBar extends Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="contrast" aria-label="Menu"
-            onClick={this.handleDrawer}>
+            <IconButton
+              className={classes.menuButton}
+              color="contrast"
+              aria-label="Menu"
+              onClick={this.handleDrawer}
+            >
               <MenuIcon />
             </IconButton>
             <Typography type="title" color="inherit" className={classes.flex}>
@@ -64,10 +68,10 @@ class NavBar extends Component {
           </Toolbar>
         </AppBar>
         <Drawer
-            docked={false}
-            open={this.state.open}
-            onClick={this.handleDrawer}
-          >
+          docked={false}
+          open={this.state.open}
+          onClick={this.handleDrawer}
+        >
           <div className={classes.drawerInner}>
             <List>
               <Link to="/project-list">
@@ -89,14 +93,6 @@ class NavBar extends Component {
             </List>
             <Divider />
             <List>
-              <Link to="/config-project">
-                <ListItem button>
-                  <ListItemIcon>
-                    <CreateNewFolderIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Add Project" />
-                </ListItem>
-              </Link>
               <Link to="/config-module">
                 <ListItem button>
                   <ListItemIcon>
@@ -114,9 +110,8 @@ class NavBar extends Component {
 }
 
 
-
 NavBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf.isRequired,
 };
 
 export default withStyles(styles)(NavBar);

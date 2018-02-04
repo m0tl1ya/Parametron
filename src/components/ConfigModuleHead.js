@@ -173,10 +173,10 @@ class ConfigModuleHead extends Component {
 }
 
 ConfigModuleHead.propTypes = {
-  classes: PropTypes.object.isRequired,
-  parameters: PropTypes.object.isRequired,
-  title: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf.isRequired,
+  parameters: PropTypes.objectOf.isRequired,
+  title: PropTypes.objectOf.isRequired,
+  description: PropTypes.objectOf.isRequired,
   discardParameters: PropTypes.func.isRequired,
   editTitle: PropTypes.func.isRequired,
   editDescription: PropTypes.func.isRequired,

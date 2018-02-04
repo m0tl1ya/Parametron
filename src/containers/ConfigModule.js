@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import ConfigModuleHead from '../components/ConfigModuleHead';
 import ConfigParameterHeader from '../components/ConfigParameterHeader';
@@ -26,10 +26,10 @@ const ConfigModule = ({ parameters, title, description, actions }) => (
 );
 
 ConfigModule.propTypes = {
-  parameters: PropTypes.array.isRequired,
-  title: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
+  parameters: PropTypes.arrayOf.isRequired,
+  title: PropTypes.objectOf.isRequired,
+  description: PropTypes.objectOf.isRequired,
+  actions: PropTypes.objectOf.isRequired,
 };
 
 const mapStateToProps = state => ({

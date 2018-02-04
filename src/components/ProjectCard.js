@@ -114,12 +114,12 @@ class ProjectCard extends Component {
 }
 
 ProjectCard.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf.isRequired,
   id: PropTypes.number.isRequired,
-  name: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
-  updated: PropTypes.object.isRequired,
-  modules: PropTypes.object.isRequired,
+  name: PropTypes.objectOf.isRequired,
+  description: PropTypes.objectOf.isRequired,
+  updated: PropTypes.objectOf.isRequired,
+  modules: PropTypes.objectOf.isRequired,
   // selectedOn: PropTypes.func.isRequired,
   // editModeOn: PropTypes.func.isRequired,
   // extractModule: PropTypes.func.isRequired,

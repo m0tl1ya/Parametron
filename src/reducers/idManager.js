@@ -41,12 +41,3 @@ function idManager(state = initialState, action) {
 }
 
 export default idManager;
-
-// const initialState = [
-//   {
-//     title: 'Training-Settings',
-//     paramters: [],
-//     paramterType: [],
-//     description: 'This module provides hyperparameter of training.',
-//   },
-// ];

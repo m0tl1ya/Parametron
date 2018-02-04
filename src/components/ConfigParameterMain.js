@@ -36,9 +36,9 @@ class ConfigParameterMain extends Component {
 }
 
 ConfigParameterMain.propTypes = {
-  classes: PropTypes.object.isRequired,
-  parameters: PropTypes.array.isRequired,
-  actions: PropTypes.func.isRequired
+  classes: PropTypes.objectOf.isRequired,
+  parameters: PropTypes.arrayOf.isRequired,
+  actions: PropTypes.func.isRequired,
 };
 
 export default ConfigParameterMain;

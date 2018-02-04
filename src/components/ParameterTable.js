@@ -10,18 +10,12 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
-    paddingBottom: '1em'
+    paddingBottom: '1em',
   },
   table: {
     minWidth: 700,
   },
 });
-
-// let counter = 0;
-// function createData(name, type) {
-//   counter += 1;
-//   return { id: counter, name, type };
-// }
 
 const columnData = [
   {
@@ -30,16 +24,7 @@ const columnData = [
   {
     id: 'type', numeric: false, disablePadding: false, label: 'Type',
   },
-  // { id: 'value', numeric: false, disablePadding: false, label: 'Value' },
 ];
-
-// const data = [
-//   createData('learning rate', 'number', 6.0),
-//   createData('weight decay', 'number', 9.0),
-//   createData('normalize', 'bool', 'false'),
-//   createData('description', 'string', 'this is test'),
-//
-// ];
 
 
 const ParameterTable = (props) => {
@@ -79,12 +64,10 @@ const ParameterTable = (props) => {
   );
 };
 
-// <TableCell>Parameter Name</TableCell>
-// <TableCell>Type</TableCell>
-// <TableCell>Value</TableCell>
+
 ParameterTable.propTypes = {
-  classes: PropTypes.object.isRequired,
-  parameters: PropTypes.array.isRequired,
+  classes: PropTypes.objectOf.isRequired,
+  parameters: PropTypes.arrayOf.isRequired,
 };
 
 export default withStyles(styles)(ParameterTable);

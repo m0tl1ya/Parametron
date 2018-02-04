@@ -23,15 +23,6 @@ export const loadModules = (state = false, action) => {
   }
 };
 
-// export const editModule = (state = false, action) => {
-//   switch (action.type) {
-//     case EDIT_MODULE:
-//       return action.isEditing;
-//     default:
-//       return state;
-//   }
-// };
-
 export const modules = (state = [], action) => {
   switch (action.type) {
     case FETCH_MODULES_SUCCESS:

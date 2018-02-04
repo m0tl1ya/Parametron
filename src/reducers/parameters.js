@@ -7,9 +7,6 @@ import {
   GET_PARAMETERS,
 } from '../actions/configModuleActions';
 
-// import {
-//   EXTRACT_PARAMETERS,
-// } from '../actions/moduleListActions';
 
 const initialState = [
   // {
@@ -37,9 +34,6 @@ function parameters(state = initialState, action) {
           type: initialParameterType,
         },
       ];
-      // return Object.assign({}, state, {
-      //   text: action.filter
-      // })
     case DELETE_PARAMETER:
       return state.filter(parameter =>
         parameter.id !== action.id);

@@ -213,14 +213,14 @@ class CreateProjectHead extends Component {
 }
 
 CreateProjectHead.propTypes = {
-  classes: PropTypes.object.isRequired,
-  modules: PropTypes.array.isRequired,
+  classes: PropTypes.objectOf.isRequired,
+  modules: PropTypes.arrayOf.isRequired,
   fetchData: PropTypes.func.isRequired,
   hasError: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  selectedIds: PropTypes.array.isRequired,
-  title: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
+  selectedIds: PropTypes.arrayOf.isRequired,
+  title: PropTypes.objectOf.isRequired,
+  description: PropTypes.objectOf.isRequired,
   editTitle: PropTypes.func.isRequired,
   editDescription: PropTypes.func.isRequired,
   discardHeaderInfo: PropTypes.func.isRequired,

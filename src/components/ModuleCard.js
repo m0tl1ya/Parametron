@@ -178,12 +178,12 @@ class ModuleCard extends Component {
 }
 
 ModuleCard.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf.isRequired,
   id: PropTypes.number.isRequired,
-  name: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
-  updated: PropTypes.object.isRequired,
-  parameters: PropTypes.object.isRequired,
+  name: PropTypes.objectOf.isRequired,
+  description: PropTypes.objectOf.isRequired,
+  updated: PropTypes.objectOf.isRequired,
+  parameters: PropTypes.objectOf.isRequired,
   selectedOn: PropTypes.func.isRequired,
   // selectedOff: PropTypes.func.isRequired,
   editModeOn: PropTypes.func.isRequired,

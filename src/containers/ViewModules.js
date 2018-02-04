@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import ModuleList from '../components/ModuleList';
-import ModuleListToolbar from '../components/ModuleListToolBar'
+import ModuleListToolbar from '../components/ModuleListToolBar';
 import * as ModuleListActions from '../actions/moduleListActions';
 import * as ParameterActions from '../actions/configModuleActions';
 import * as ModuleListEditActions from '../actions/moduleListEditActions';
@@ -33,11 +33,8 @@ const ViewModules = ({ modules, editingId, selectedIds, hasError, isLoading, act
 );
 
 ViewModules.propTypes = {
-  modules: PropTypes.array.isRequired,
-  // parameters: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
-  // actions: PropTypes.object.isRequired,
-  // actions: PropTypes.object.isRequired,
+  modules: PropTypes.arrayOf.isRequired,
+  actions: PropTypes.objectOf.isRequired,
 };
 
 const mapStateToProps = state => ({
