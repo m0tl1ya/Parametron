@@ -26,13 +26,13 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit * 7,
     marginRight: theme.spacing.unit,
-    background: blueGrey[50],// #afbbc9
+    background: blueGrey[50], // #afbbc9
     width: 400,
   },
   descField: {
     marginLeft: theme.spacing.unit * 7,
     marginRight: theme.spacing.unit,
-    background: blueGrey[50],// #afbbc9
+    background: blueGrey[50], // #afbbc9
     width: 500,
   },
 });
@@ -77,14 +77,16 @@ class ModuleListToolbar extends Component {
     if (this.state.selectedIds.length > 0) {
       if (!this.state.creatingProject) {
         element = (
-          <Button
-            raised
-            color="secondary"
-            className={classes.button}
-            onClick={this.handleClick}
-          >
-            Create Project
-          </Button>
+          <Link to="/create-project">
+            <Button
+              raised
+              color="secondary"
+              className={classes.button}
+              onClick={this.handleClick}
+            >
+              Go to Creating Project
+            </Button>
+          </Link>
         );
       } else {
         element = (

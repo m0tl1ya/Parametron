@@ -3,8 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 
-import ModuleCard from './ModuleCard'
-import EditModule from '../containers/EditModule';
+import ModuleCard from './ModuleCard';
 
 import { SHOW_ALL, SHOW_SELECTED } from '../actions/parameterFilters';
 
@@ -95,11 +94,11 @@ class ModuleList extends Component {
         <h4>No modules yet...</h4>
       );
     }
-    const filteredModules = this.state.modules.filter(MODULE_FILTERS[filter]);
+    // const filteredModules = this.state.modules; //.filter(MODULE_FILTERS[filter]);
 
     return (
       <div>
-        {filteredModules.map(module =>
+        {this.state.modules.map(module =>
           <ModuleCard
             id={module.id}
             name={module.name}

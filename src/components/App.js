@@ -9,6 +9,7 @@ import ConfigProject from './ConfigProject';
 import ViewModules from '../containers/ViewModules';
 import ConfigModule from '../containers/ConfigModule';
 import EditModule from '../containers/EditModule';
+import CreateProject from '../containers/CreateProject';
 import NavBar from './NavBar';
 
 
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path="/" component={ProjectTable} />
         <Route path="/project-table" component={ProjectTable} />
         <Route path="/module-table" component={ViewModules} />
+        <Route path="/create-project" component={CreateProject} />
         <Route path="/config-project" component={ConfigProject} />
         <Route path="/config-module" component={ConfigModule} />
         <Route path="/edit-module" component={EditModule} />

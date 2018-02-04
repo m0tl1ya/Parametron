@@ -15,7 +15,6 @@ import Checkbox from 'material-ui/Checkbox';
 import ModeEditIcon from 'material-ui-icons/ModeEdit';
 
 import ParameterTable from './ParameterTable';
-import ConfigModule from '../containers/ConfigModule';
 
 
 
@@ -174,64 +173,7 @@ class ModuleCard extends Component {
         </Card>
       </div>
     );
-    // if (!this.state.editMode) {
-    //   return (
-    //     <div className={classes.moduleArea}>
-    //
-    //       <Card className={classes.card}>
-    //         <div className={classes.buttonBars}>
-    //           <Checkbox
-    //                   checked={false}
-    //                   tabIndex={-1}
-    //                   disableRipple={false}
-    //                 />
-    //           <Link to="/edit-module">
-    //             <Button
-    //               color="secondary"
-    //               aria-label="edit"
-    //               className={classes.editButton}
-    //               onClick={this.handleEditClick}
-    //             >
-    //               <ModeEditIcon />
-    //             </Button>
-    //           </Link>
-    //         </div>
-    //
-    //         <CardHeader
-    //           action={
-    //             <IconButton
-    //                 className={classnames(classes.expand, {
-    //                   [classes.expandOpen]: this.state.expanded,
-    //                 })}
-    //                 onClick={this.handleExpandClick}
-    //                 aria-expanded={this.state.expanded}
-    //                 aria-label="Show more"
-    //               >
-    //                 <ExpandMoreIcon />
-    //             </IconButton>
-    //           }
-    //           title={this.props.name}
-    //           subheader={this.props.description}
-    //         >
-    //         </CardHeader>
-    //
-    //         <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
-    //           <ParameterTable
-    //             parameters={parameters}>
-    //           </ParameterTable>
-    //         </Collapse>
-    //
-    //       </Card>
-    //     </div>
-    //   );
-    //
-    // } else {
-    //   return (
-    //     <div className={classes.moduleArea}>
-    //
-    //     </div>
-    //   );
-    // }
+
   }
 }
 
