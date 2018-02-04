@@ -167,14 +167,16 @@ class CreateProjectHead extends Component {
               fullWidth
               margin="normal"
             />
-            <Button
-              raised
-              color="primary"
-              className={classes.button}
-              onClick={this.handleSave}
-            >
-            Save
-            </Button>
+            <Link to="/module-list">
+              <Button
+                raised
+                color="primary"
+                className={classes.button}
+                onClick={this.handleSave}
+              >
+              Save
+              </Button>
+            </Link>
           </div>
           <div>
             <TextField

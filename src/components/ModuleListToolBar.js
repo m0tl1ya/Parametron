@@ -83,54 +83,6 @@ class ModuleListToolbar extends Component {
             </Button>
           </Link>
         );
-      } else {
-        element = (
-          <div className="CreateModuleHeader">
-            <div>
-              <Button
-                raised
-                color="secondary"
-                className={classes.button}
-                onClick={this.handleClick}
-              >
-                Cancel
-              </Button>
-            </div>
-            <div>
-              <TextField
-                id="module-name"
-                className={classes.textField}
-                label="Module Name"
-                value={this.state.name}
-                fullWidth
-                margin="normal"
-              />
-              <Button
-                raised
-                color="primary"
-                className={classes.button}
-                onClick={this.handleSave}
-              >
-              Save
-              </Button>
-            </div>
-            <div>
-              <TextField
-                id="full-width"
-                label="Description"
-                className={classes.descField}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                value={this.state.description}
-                margin="normal"
-              />
-            </div>
-
-            <Divider />
-
-          </div>
-        );
       }
     } else {
       element = (

@@ -77,16 +77,26 @@ class ProjectCard extends Component {
         <Card className={classes.card}>
           <CardHeader
             action={
-              <IconButton
-                  className={classnames(classes.expand, {
-                    [classes.expandOpen]: this.state.expanded,
-                  })}
-                  onClick={this.handleExpandClick}
-                  aria-expanded={this.state.expanded}
-                  aria-label="Show more"
+              <div>
+                <Button
+                  raised
+                  color="primary"
+                  className={classes.button}
                 >
-                  <ExpandMoreIcon />
-              </IconButton>
+                  Settings
+                </Button>
+                <IconButton
+                    className={classnames(classes.expand, {
+                      [classes.expandOpen]: this.state.expanded,
+                    })}
+                    onClick={this.handleExpandClick}
+                    aria-expanded={this.state.expanded}
+                    aria-label="Show more"
+                  >
+                    <ExpandMoreIcon />
+                </IconButton>
+              </div>
+
             }
             title={this.props.name}
             subheader={this.props.description}
