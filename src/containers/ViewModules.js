@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import ModuleList from '../components/ModuleList';
 import ModuleListToolbar from '../components/ModuleListToolBar';
 import * as ModuleListActions from '../actions/moduleListActions';
-import * as ParameterActions from '../actions/configModuleActions';
+import * as ParameterActions from '../actions/createModuleActions';
 import * as ModuleListEditActions from '../actions/moduleListEditActions';
 import * as HeaderInfoActions from '../actions/headerInfoActions';
 
@@ -48,7 +48,7 @@ const mapStateToProps = state => ({
   // isEditing: state.editModule,
 });
 
-// console.log(ConfigModuleActions);
+// console.log(CreateModuleActions);
 
 const mapDispatchToProps = dispatch => ({
   // actions: bindActionCreators(Object.assign({}, ModuleListActions, ParameterActions), dispatch),

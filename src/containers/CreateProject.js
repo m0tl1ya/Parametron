@@ -43,7 +43,6 @@ const mapStateToProps = state => ({
   description: state.headerInfo.description,
 });
 
-// console.log(ConfigModuleActions);
 
 const mapDispatchToProps = dispatch => ({
   actions: {

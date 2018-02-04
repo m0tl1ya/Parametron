@@ -93,7 +93,7 @@ class NavBar extends Component {
             </List>
             <Divider />
             <List>
-              <Link to="/config-module">
+              <Link to="/create-module">
                 <ListItem button>
                   <ListItemIcon>
                     <AddBoxIcon />

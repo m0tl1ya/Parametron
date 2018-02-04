@@ -36,7 +36,7 @@ const styles = theme => ({
 });
 
 
-class ConfigModuleHead extends Component {
+class CreateModuleHead extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -126,7 +126,7 @@ class ConfigModuleHead extends Component {
     const { classes } = this.props;
 
     return (
-      <div className="ConfigModuleHeader">
+      <div className="CreateModuleHeader">
         <div>
           <DiscardDialog
             discard={this.handleDiscard}
@@ -172,7 +172,7 @@ class ConfigModuleHead extends Component {
   }
 }
 
-ConfigModuleHead.propTypes = {
+CreateModuleHead.propTypes = {
   classes: PropTypes.objectOf.isRequired,
   parameters: PropTypes.objectOf.isRequired,
   title: PropTypes.objectOf.isRequired,
@@ -183,4 +183,4 @@ ConfigModuleHead.propTypes = {
   discardHeaderInfo: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(ConfigModuleHead);
+export default withStyles(styles)(CreateModuleHead);

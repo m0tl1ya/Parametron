@@ -85,7 +85,7 @@ class ModuleListToolbar extends Component {
         );
       } else {
         element = (
-          <div className="ConfigModuleHeader">
+          <div className="CreateModuleHeader">
             <div>
               <Button
                 raised

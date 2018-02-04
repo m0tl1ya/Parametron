@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ConfigProject from './ConfigProject';
 import ViewProjects from '../containers/ViewProjects';
 import ViewModules from '../containers/ViewModules';
-import ConfigModule from '../containers/ConfigModule';
+import CreateModule from '../containers/CreateModule';
 import EditModule from '../containers/EditModule';
 import CreateProject from '../containers/CreateProject';
 import NavBar from './NavBar';
@@ -24,7 +24,7 @@ const App = () => (
         <Route path="/module-list" component={ViewModules} />
         <Route path="/create-project" component={CreateProject} />
         <Route path="/config-project" component={ConfigProject} />
-        <Route path="/config-module" component={ConfigModule} />
+        <Route path="/create-module" component={CreateModule} />
         <Route path="/edit-module" component={EditModule} />
       </Switch>
     </div>

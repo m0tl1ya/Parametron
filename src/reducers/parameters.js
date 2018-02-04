@@ -5,7 +5,7 @@ import {
   EDIT_PARAMETER_TYPE,
   DISCARD_PARAMETERS,
   GET_PARAMETERS,
-} from '../actions/configModuleActions';
+} from '../actions/createModuleActions';
 
 
 const initialState = [

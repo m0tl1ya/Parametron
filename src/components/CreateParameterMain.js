@@ -9,7 +9,7 @@ const PARAMETER_FILTERS = {
 };
 
 
-class ConfigParameterMain extends Component {
+class CreateParameterMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,10 +35,10 @@ class ConfigParameterMain extends Component {
   }
 }
 
-ConfigParameterMain.propTypes = {
+CreateParameterMain.propTypes = {
   classes: PropTypes.objectOf.isRequired,
   parameters: PropTypes.arrayOf.isRequired,
   actions: PropTypes.func.isRequired,
 };
 
-export default ConfigParameterMain;
+export default CreateParameterMain;

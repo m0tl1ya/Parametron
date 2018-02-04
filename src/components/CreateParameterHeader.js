@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ParameterTextInput from './ParameterTextInput';
 
-class ConfigParameterHeader extends Component {
+class CreateParameterHeader extends Component {
   constructor(props) {
     super(props);
     this.handleSave = this.handleSave.bind(this);
@@ -27,8 +27,8 @@ class ConfigParameterHeader extends Component {
   }
 }
 
-ConfigParameterHeader.propTypes = {
+CreateParameterHeader.propTypes = {
   addParameter: PropTypes.func.isRequired,
 };
 
-export default ConfigParameterHeader;
+export default CreateParameterHeader;

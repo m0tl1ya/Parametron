@@ -3,29 +3,29 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import ConfigModuleHead from '../components/ConfigModuleHead';
-import ConfigParameterHeader from '../components/ConfigParameterHeader';
-import ConfigParameterMain from '../components/ConfigParameterMain';
-import * as ConfigModuleActions from '../actions/configModuleActions';
+import CreateModuleHead from '../components/CreateModuleHead';
+import CreateParameterHeader from '../components/CreateParameterHeader';
+import CreateParameterMain from '../components/CreateParameterMain';
+import * as CreateModuleActions from '../actions/createModuleActions';
 import * as HeaderInfoActions from '../actions/headerInfoActions';
 
-const ConfigModule = ({ parameters, title, description, actions }) => (
+const CreateModule = ({ parameters, title, description, actions }) => (
   <div>
-    <ConfigModuleHead
+    <CreateModuleHead
       parameters={parameters}
       title={title}
       description={description}
-      discardParameters={actions.configModuleActions.discardParameters}
+      discardParameters={actions.createModuleActions.discardParameters}
       editTitle={actions.headerInfoActions.editTitle}
       editDescription={actions.headerInfoActions.editDescription}
       discardHeaderInfo={actions.headerInfoActions.discardHeaderInfo}
     />
-    <ConfigParameterHeader addParameter={actions.configModuleActions.addParameter} />
-    <ConfigParameterMain parameters={parameters} actions={actions.configModuleActions} />
+    <CreateParameterHeader addParameter={actions.createModuleActions.addParameter} />
+    <CreateParameterMain parameters={parameters} actions={actions.createModuleActions} />
   </div>
 );
 
-ConfigModule.propTypes = {
+CreateModule.propTypes = {
   parameters: PropTypes.arrayOf.isRequired,
   title: PropTypes.objectOf.isRequired,
   description: PropTypes.objectOf.isRequired,
@@ -38,15 +38,15 @@ const mapStateToProps = state => ({
   description: state.headerInfo.description,
 });
 
-// console.log(ConfigModuleActions);
+// console.log(CreateModuleActions);
 
 const mapDispatchToProps = dispatch => ({
-  // actions: bindActionCreators(ConfigModuleActions, dispatch),
+  // actions: bindActionCreators(CreateModuleActions, dispatch),
   actions: {
-    configModuleActions: bindActionCreators(ConfigModuleActions, dispatch),
+    createModuleActions: bindActionCreators(CreateModuleActions, dispatch),
     headerInfoActions: bindActionCreators(HeaderInfoActions, dispatch),
   },
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ConfigModule);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateModule);

@@ -134,7 +134,7 @@ class EditModuleHead extends Component {
     const { classes } = this.props;
 
     return (
-      <div className="ConfigModuleHeader">
+      <div className="CreateModuleHeader">
         <div>
           <BackDialog
             discard={this.handleDiscard}
