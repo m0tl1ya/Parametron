@@ -95,43 +95,8 @@ class ModuleList extends Component {
         <h4>No modules yet...</h4>
       );
     }
-    if (editingId !== -1) {
-      // const selectedModule = this.state.modules[editingId];
-      // const selectedModule = this.state.modules.filter(MODULE_FILTERS[filter])
-      // return (
-      //   <EditModule
-      //     moduleId={editingId}
-      //     parameters={selectedModule.parameters}
-      //     title={selectedModule.name}
-      //     description={selectedModule.description}
-      //   />
-      //
-      //
-      //   // <ModuleCard
-      //   //   id={selectedModule.id}
-      //   //   name={selectedModule.name}
-      //   //   description={selectedModule.description}
-      //   //   updated={selectedModule.updateAt}
-      //   //   parameters={selectedModule.parameters}
-      //   //   editMode={this.selctForEdit}
-      //   //   extractParameters={this.handleEditClick}
-      //   // />
-      //
-      // );
-    }
-    const filteredModules = this.state.modules.filter(MODULE_FILTERS[filter])
-    // console.log(filteredModules);
-    // console.log(filteredModules[1]);
-    // console.log(this.props.modules[1].parameters);
-    // if (this.state.editMode) {
-    //   return (
-    //     <div>
-    //       <ConfigModule
-    //         parameters={filteredModules[1].parameters}
-    //       />
-    //     </div>
-    //   )
-    // }
+    const filteredModules = this.state.modules.filter(MODULE_FILTERS[filter]);
+
     return (
       <div>
         {filteredModules.map(module =>

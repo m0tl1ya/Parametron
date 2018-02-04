@@ -4,13 +4,19 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import ModuleList from '../components/ModuleList';
+import ModuleListToolbar from '../components/ModuleListToolBar'
 import * as ModuleListActions from '../actions/moduleListActions';
 import * as ParameterActions from '../actions/configModuleActions';
 import * as ModuleListEditActions from '../actions/moduleListEditActions';
 import * as HeaderInfoActions from '../actions/headerInfoActions';
 
-const ViewModules = ({ modules, editingId, hasError, isLoading, actions }) => (
+const ViewModules = ({ modules, editingId, selectedIds, hasError, isLoading, actions }) => (
   <div>
+    <ModuleListToolbar
+      modules={modules}
+      selectedIds={selectedIds}
+      reset={actions.moduleListEditActions.resetSelected}
+    />
     <ModuleList
       modules={modules}
       editingId={editingId}
@@ -40,7 +46,8 @@ const mapStateToProps = state => ({
   // parameters: state.parameters,
   hasError: state.getModulesError,
   isLoading: state.loadModules,
-  editingId: state.idManager.id,
+  editingId: state.idManager.editing,
+  selectedIds: state.idManager.selected,
   // isEditing: state.editModule,
 });
 

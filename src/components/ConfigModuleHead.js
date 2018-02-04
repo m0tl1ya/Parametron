@@ -165,8 +165,7 @@ class ConfigModuleHead extends Component {
         />
         </div>
 
-      <Divider />
-
+        <Divider />
 
       </div>
     );

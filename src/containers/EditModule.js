@@ -34,7 +34,7 @@ EditModule.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  editingId: state.idManager.id,
+  editingId: state.idManager.editing,
   parameters: state.parameters,
   title: state.headerInfo.title,
   description: state.headerInfo.description,
