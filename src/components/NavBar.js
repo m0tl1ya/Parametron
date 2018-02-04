@@ -70,7 +70,7 @@ class NavBar extends Component {
           >
           <div className={classes.drawerInner}>
             <List>
-              <Link to="/project-table">
+              <Link to="/project-list">
                 <ListItem button>
                   <ListItemIcon>
                     <FolderIcon />
@@ -78,7 +78,7 @@ class NavBar extends Component {
                     <ListItemText primary="Projects" />
                 </ListItem>
               </Link>
-              <Link to="/module-table">
+              <Link to="/module-list">
                 <ListItem button>
                   <ListItemIcon>
                     <WebAssetIcon />

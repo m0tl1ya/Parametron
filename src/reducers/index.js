@@ -5,14 +5,22 @@ import {
   loadModules,
   modules,
 } from './modules';
+import {
+  getProjectsError,
+  loadProjects,
+  projects,
+} from './projects';
 
-import headerInfo from './headerInfo'
-import idManager from './idManager'
+import headerInfo from './headerInfo';
+import idManager from './idManager';
 
 const rootReducer = combineReducers({
   parameters,
   getModulesError,
   loadModules,
+  getProjectsError,
+  loadProjects,
+  projects,
   modules,
   headerInfo,
   idManager,

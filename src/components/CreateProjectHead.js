@@ -14,7 +14,7 @@ import Typography from 'material-ui/Typography';
 import { blueGrey } from 'material-ui/colors';
 import { Link } from 'react-router-dom';
 
-import ModulePanel from './ModulePanel'
+import ModulePanel from './ModulePanel';
 import DiscardDialog from './DiscardDialog';
 import db from '../lib/db';
 
@@ -146,7 +146,7 @@ class CreateProjectHead extends Component {
     return (
       <div>
         <div className="ConfigModuleHeader">
-          <Link to="/module-table">
+          <Link to="/module-list">
             <Button
               raised
               color="secondary"

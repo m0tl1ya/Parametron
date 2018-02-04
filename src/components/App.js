@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 // import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // import Layout from './Layout';
-import ProjectTable from './ProjectTable';
+
 import ConfigProject from './ConfigProject';
+import ViewProjects from '../containers/ViewProjects';
 import ViewModules from '../containers/ViewModules';
 import ConfigModule from '../containers/ConfigModule';
 import EditModule from '../containers/EditModule';
@@ -18,9 +19,9 @@ const App = () => (
     <div>
       <NavBar />
       <Switch>
-        <Route exact path="/" component={ProjectTable} />
-        <Route path="/project-table" component={ProjectTable} />
-        <Route path="/module-table" component={ViewModules} />
+        <Route exact path="/" component={ViewProjects} />
+        <Route path="/project-list" component={ViewProjects} />
+        <Route path="/module-list" component={ViewModules} />
         <Route path="/create-project" component={CreateProject} />
         <Route path="/config-project" component={ConfigProject} />
         <Route path="/config-module" component={ConfigModule} />
