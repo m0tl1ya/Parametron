@@ -32,7 +32,7 @@
     "@storybook/addon-actions": "^3.2.13",
     "@storybook/addon-links": "^3.2.13",
     "@storybook/react": "^3.2.13",
-    "electron": "^1.7.9",
+    "electron": "^1.7.11",
     "eslint": "^4.10.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
