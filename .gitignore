@@ -10,7 +10,7 @@
 /build
 
 # storybook
-/storybook
+/.storybook
 
 # misc
 .DS_Store
