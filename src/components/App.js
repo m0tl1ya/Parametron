@@ -23,9 +23,9 @@ const App = () => (
         <Route path="/project-list" component={ViewProjects} />
         <Route path="/module-list" component={ViewModules} />
         <Route path="/create-project" component={CreateProject} />
-        <Route path="/config-project" component={ConfigProject} />
         <Route path="/create-module" component={CreateModule} />
         <Route path="/edit-module" component={EditModule} />
+        <Route path="/config-project" component={CreateProject} />
       </Switch>
     </div>
   </BrowserRouter>

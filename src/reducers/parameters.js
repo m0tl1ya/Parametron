@@ -60,7 +60,7 @@ function parameters(state = initialState, action) {
       // return state.filter(parameter =>
       //   parameter.id !== -1);
       state = [...action.array];
-      return state
+      return state;
 
     default:
       return state;

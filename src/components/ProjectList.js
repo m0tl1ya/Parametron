@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 
 import ProjectCard from './ProjectCard';
+import ConfigProject from './ConfigProject';
 
 // import { SHOW_ALL, SHOW_SELECTED } from '../actions/parameterFilters';
 
@@ -29,17 +30,32 @@ class ProjectList extends Component {
     this.state = {
       // filter: SHOW_ALL,
       projects: this.props.projects,
+      setting: false,
+      settingId: null,
     };
+    this.handleConfigClick = this.handleConfigClick.bind(this);
   }
 
   componentWillMount() {
     // this.setState({ filter: SHOW_ALL });
     this.props.fetchData();
+    this.setState({ setting: false });
+    this.setState({ settingId: null });
   }
-
 
   componentWillReceiveProps(nextProps) {
     this.setState({ projects: nextProps.projects });
+  }
+
+  componentDidUpdate() {
+    this.props.discardHeaderInfo();
+  }
+
+  handleConfigClick(id) {
+    // this.props.getHeaderInfo(title, description);
+    this.setState({ setting: true });
+    this.setState({ settingId: id - 1 });
+    // this.props.getParameters(data);
   }
 
   render() {
@@ -54,6 +70,14 @@ class ProjectList extends Component {
         <h4>No projects yet...</h4>
       );
     }
+    if (this.state.setting) {
+      return (
+        <ConfigProject
+          project={this.state.projects[this.state.settingId]}
+        />
+      );
+    }
+// project={this.state.projects.filter(project => project.id === 1)}
 
     return (
       <div>
@@ -64,6 +88,7 @@ class ProjectList extends Component {
             description={project.description}
             updated={project.updateAt}
             modules={project.modules}
+            extractProject={this.handleConfigClick}
           />)}
       </div>
     );
@@ -79,7 +104,8 @@ ProjectList.propTypes = {
   // selectModule: PropTypes.func.isRequired,
   // untickModule: PropTypes.func.isRequired,
   // getParameters: PropTypes.func.isRequired,
-  // getHeaderInfo: PropTypes.func.isRequired,
+  getHeaderInfo: PropTypes.func.isRequired,
+  discardHeaderInfo: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ProjectList);

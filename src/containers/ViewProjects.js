@@ -8,7 +8,7 @@ import ProjectList from '../components/ProjectList';
 import * as ProjectListActions from '../actions/projectListActions';
 // import * as ParameterActions from '../actions/configModuleActions';
 // import * as ModuleListEditActions from '../actions/moduleListEditActions';
-// import * as HeaderInfoActions from '../actions/headerInfoActions';
+import * as HeaderInfoActions from '../actions/headerInfoActions';
 
 const ViewProjects = ({ projects, hasError, isLoading, actions }) => (
   <div>
@@ -17,6 +17,8 @@ const ViewProjects = ({ projects, hasError, isLoading, actions }) => (
       hasError={hasError}
       isLoading={isLoading}
       fetchData={actions.projectListActions.fetchProjects}
+      getHeaderInfo={actions.headerInfoActions.getHeaderInfo}
+      discardHeaderInfo={actions.headerInfoActions.discardHeaderInfo}
     />
   </div>
 );
@@ -30,6 +32,7 @@ ViewProjects.propTypes = {
 
 const mapStateToProps = state => ({
   projects: state.projects,
+  headerInfo: PropTypes.object.isRequired,
   hasError: state.getProjectsError,
   isLoading: state.loadProjects,
 });
@@ -39,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
     projectListActions: bindActionCreators(ProjectListActions, dispatch),
     // moduleListEditActions: bindActionCreators(ModuleListEditActions, dispatch),
     // parameterActions: bindActionCreators(ParameterActions, dispatch),
-    // headerInfoActions: bindActionCreators(HeaderInfoActions, dispatch),
+    headerInfoActions: bindActionCreators(HeaderInfoActions, dispatch),
   },
 });
 

@@ -58,6 +58,7 @@ class ProjectCard extends Component {
       expanded: false,
     };
     this.handleExpandClick = this.handleExpandClick.bind(this);
+    this.handleSettingClick = this.handleSettingClick.bind(this);
     // this.handleToggle = this.handleToggle.bind(this);
     // this.handleEditClick = this.handleEditClick.bind(this);
   }
@@ -65,6 +66,15 @@ class ProjectCard extends Component {
 
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
+  };
+
+  handleSettingClick() {
+    this.props.extractProject(
+      this.props.id,
+      this.props.name,
+      this.props.description,
+      this.props.modules
+    )
   };
 
 
@@ -82,6 +92,7 @@ class ProjectCard extends Component {
                   raised
                   color="primary"
                   className={classes.button}
+                  onClick={this.handleSettingClick}
                 >
                   Settings
                 </Button>
@@ -130,6 +141,7 @@ ProjectCard.propTypes = {
   description: PropTypes.objectOf.isRequired,
   updated: PropTypes.objectOf.isRequired,
   modules: PropTypes.objectOf.isRequired,
+  extractProject: PropTypes.func.isRequired,
   // selectedOn: PropTypes.func.isRequired,
   // editModeOn: PropTypes.func.isRequired,
   // extractModule: PropTypes.func.isRequired,

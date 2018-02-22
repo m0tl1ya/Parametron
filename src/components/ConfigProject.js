@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import fs from 'fs';
 
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
@@ -14,20 +15,14 @@ import { blueGrey } from 'material-ui/colors';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Paper from 'material-ui/Paper';
 
+import ConfigModule from './ConfigModule';
+
 import Dialog, {
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
 } from 'material-ui/Dialog';
-
-function TabContainer(props) {
-  return <div style={{ padding: 8 * 3 }}>{props.children}</div>;
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 
 const styles = theme => ({
@@ -43,108 +38,100 @@ const styles = theme => ({
     background: blueGrey[50], // #afbbc9
     width: 500,
   },
-  addButton: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+  button: {
+    margin: '0.1em',
   },
 });
 
+let settingTargetFrame = {};
 
 class ConfigProject extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isDialogOpen: false,
-      value: 'one',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleRequestClose = this.handleRequestClose.bind(this);
+    // this.state = {
+    //   value: 'one',
+    // };
+    this.handleSave = this.handleSave.bind(this);
+    // this.handleRequestClose = this.handleRequestClose.bind(this);
   }
 
-  handleChange(event, value) {
-    this.setState({ value });
+  componentWillMount() {
+    // const project = this.props;
+    settingTargetFrame = {};
+
+    settingTargetFrame.name = this.props.project.name;
+    settingTargetFrame.description = this.props.project.description;
+    this.props.project.modules.map((module) => {
+      let settingModule = {};
+      // settingModule.name = module.name;
+      settingModule.description = module.description;
+      settingModule.parameters = {};
+      module.parameters.map((parameter) => {
+        if (parameter.type === 'Number') {
+          settingModule.parameters[parameter.text] = 0;
+        }
+        if (parameter.type === 'Bool') {
+          settingModule.parameters[parameter.text] = false;
+        }
+        if (parameter.type === 'String') {
+          settingModule.parameters[parameter.text] = '';
+        }
+      }),
+      settingTargetFrame[module.name] = settingModule;
+    },
+    );
+    console.log(settingTargetFrame);
   }
 
-  handleRequestClose() {
-    this.setState({ isDialogOpen: false });
+  componentWillUnmount() {
+    console.log(settingTargetFrame);
+  }
+
+  handleSave() {
+    // const remote = require('electron').remote;
+    // const electronFs = remote.require('fs');
+    // electronFs.writeFile('hoge.json', JSON.stringify(settingTargetFrame, null, '    '));
+    // const storage = require('electron-json-storage');
+    // storage.set('./config.json', settingTargetFrame, function (error) {
+    // if (error) throw error;
+    // });
+    // const blob = new Blob([JSON.stringify(settingTargetFrame, null, '  ')], {type: 'application\/json'});
+
+    // const writeJsonFile = require('write-json-file');
+    //
+    // writeJsonFile('./foo.json', settingTargetFrame).then(() => {
+    //     console.log('done');
+    // });
+    console.log(settingTargetFrame);
   }
 
   render() {
-    const { classes } = this.props;
-    const { value } = this.state;
-
+    const { classes, project } = this.props;
+    // console.log(project); // true after this.setState({ editing: true });
+    // let i = 0;
     return (
-      <div className="ConfigProject">
-        <div className="ConfigProjectHeader">
-          <IconButton
-            className={classes.button}
-            aria-label="Delete"
-            onClick={this.handleOpen}
-          >
-            <ClearIcon />
-          </IconButton>
-          <Dialog open={this.state.isDialogOpen} onRequestClose={this.handleRequestClose}>
-            <DialogTitle>{"Do you discard settings?"}</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                Do you discard settings?
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={this.handleRequestClose} color="primary">
-                Discard
-              </Button>
-              <Button onClick={this.handleRequestClose} color="primary" autoFocus>
-                Cancel
-              </Button>
-            </DialogActions>
-          </Dialog>
-          <TextField
-            id="module-name"
-            className={classes.textField}
-            label="Module Name"
-            fullWidth
-            margin="normal"
-          />
-          <Button raised color="primary" className={classes.button}>
-          Save
-          </Button>
-        </div>
-        <div className="ConfigProjectContents">
-          <Tabs value={value} onChange={this.handleChange}>
-            <Tab value="one" label="Select Module" />
-            <Tab value="two" label="Settings" />
-            <Tab value="three" label="Information" />
-          </Tabs>
-          {value === 'one' && <TabContainer>Item One</TabContainer>}
-          {value === 'two' && <TabContainer>Item Two</TabContainer>}
-          {value === 'three' &&
-            <TabContainer>
-              <form>
-                <TextField
-                  id="full-width"
-                  label="Description"
-                  className={classes.descField}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  margin="normal"
-                />
-              </form>
-            </TabContainer>
-        }
-
-
-        </div>
-
-
+      <div>
+        <Button
+          raised
+          color="secondary"
+          className={classes.button}
+          onClick={this.handleSave}
+        >
+        Save
+        </Button>
+        {project.modules.map(module =>
+          <ConfigModule
+            module={module}
+            moduleForm={settingTargetFrame[module.name]}
+          />)}
       </div>
     );
   }
 }
 
 ConfigProject.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf.isRequired,
+  project: PropTypes.objectOf.isRequired,
 };
 
 export default withStyles(styles)(ConfigProject);

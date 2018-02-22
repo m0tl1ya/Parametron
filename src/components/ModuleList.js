@@ -64,10 +64,10 @@ class ModuleList extends Component {
     }
   }
 
-  handleEditClick(title, descriptioin, data) {
+  handleEditClick(title, description, data) {
     // this.setState({ editMode: true });
     // console.log(data);
-    this.props.getHeaderInfo(title, descriptioin);
+    this.props.getHeaderInfo(title, description);
     this.props.getParameters(data);
   }
 
