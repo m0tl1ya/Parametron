@@ -92,7 +92,7 @@ class ModuleCard extends Component {
       });
       this.props.selectedOn(this.props.id, false);
     }
-  };
+  }
 
   handleEditClick() {
     // this.props.edit()
@@ -129,11 +129,11 @@ class ModuleCard extends Component {
         <Card className={classes.card}>
           <div className={classes.buttonBars}>
             <Checkbox
-                    tabIndex={-1}
-                    onChange={this.handleToggle}
-                    checked={this.state.checked}
-                    disableRipple={false}
-                  />
+              tabIndex={-1}
+              onChange={this.handleToggle}
+              checked={this.state.checked}
+              disableRipple={false}
+            />
             <Link to="/edit-module">
               <Button
                 color="secondary"

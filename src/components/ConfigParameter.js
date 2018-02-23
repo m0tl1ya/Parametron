@@ -6,21 +6,13 @@ import classnames from 'classnames';
 
 import { withStyles } from 'material-ui/styles';
 
-import Icon from 'material-ui/Icon';
-import IconButton from 'material-ui/IconButton';
-import ClearIcon from 'material-ui-icons/Clear';
-import Button from 'material-ui/Button';
-
 import TextField from 'material-ui/TextField';
-import Divider from 'material-ui/Divider';
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import { MenuItem } from 'material-ui/Menu';
-import Select from 'material-ui/Select';
 
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Switch from 'material-ui/Switch';
+
+import ConfigParameterWithNumber from './ConfigParameterWithNumber';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -66,9 +58,9 @@ class ConfigParameter extends Component {
       checked: false,
     };
     this.handleBlur = this.handleBlur.bind(this);
+    this.handleBlurOfArray = this.handleBlurOfArray.bind(this);
     this.handleSwitch = this.handleSwitch.bind(this);
     // this.handleClick = this.handleClick.bind(this);
-    // this.handleSave = this.handleSave.bind(this);
     // this.handleType = this.handleType.bind(this);
   }
 
@@ -87,6 +79,10 @@ class ConfigParameter extends Component {
     }
   }
 
+  handleBlurOfArray(array) {
+    this.props.onSave(this.props.parameter.text, array);
+  }
+
   handleSwitch() {
     // console.log(!this.state.checked);
     this.props.onSave(this.props.parameter.text, !this.state.checked);
@@ -98,24 +94,11 @@ class ConfigParameter extends Component {
     // console.log(parameter);
     if (parameter.type === 'Number') {
       return (
-        <div>
-          <Paper className={classes.root}>
-              {parameter.text}
-              <div>
-                <TextField
-                  id="full-width"
-                  label={parameter.text}
-                  className={classes.descField}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onBlur={this.handleBlur}
-                  margin="normal"
-                  type="number"
-                />
-              </div>
-          </Paper>
-        </div>
+        <ConfigParameterWithNumber
+          parameter={parameter}
+          saveSingleValue={this.handleBlur}
+          saveArray={this.handleBlurOfArray}
+        />
       );
     }
     if (parameter.type === 'String') {
@@ -158,9 +141,20 @@ class ConfigParameter extends Component {
     return (
       <div>
         <Paper className={classes.root}>
-          <Typography component="p">
-            {parameter.text}
-          </Typography>
+          {parameter.text}
+          <div>
+            <TextField
+              id="full-width"
+              label={parameter.text}
+              className={classes.descField}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onBlur={this.handleBlur}
+              margin="normal"
+              type="number"
+            />
+          </div>
         </Paper>
       </div>
     );
