@@ -80,7 +80,7 @@ class ConfigProject extends Component {
       settingTargetFrame[module.name] = settingModule;
     },
     );
-    console.log(settingTargetFrame);
+    // console.log(settingTargetFrame);
   }
 
   componentWillUnmount() {

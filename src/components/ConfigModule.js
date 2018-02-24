@@ -59,7 +59,7 @@ const styles = theme => ({
 });
 
 
-class ParameterItem extends Component {
+class ConfigModule extends Component {
   constructor(props) {
     super(props);
     // this.handleClick = this.handleClick.bind(this);
@@ -70,7 +70,7 @@ class ParameterItem extends Component {
   handleSave(parameterName, value) {
     // console.log('handleSave');
     // console.log(this.props.moduleForm);
-    console.log(value);
+    // console.log(value);
     this.props.moduleForm.parameters[parameterName] = value;
     // console.log('change');
     // console.log(this.props.moduleForm);
@@ -97,10 +97,10 @@ class ParameterItem extends Component {
 }
 
 
-ParameterItem.propTypes = {
+ConfigModule.propTypes = {
   classes: PropTypes.objectOf.isRequired,
   module: PropTypes.objectOf.isRequired,
   moduleForm: PropTypes.objectOf.isRequired,
 };
 
-export default withStyles(styles)(ParameterItem);
+export default withStyles(styles)(ConfigModule);
