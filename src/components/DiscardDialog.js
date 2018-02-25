@@ -58,7 +58,7 @@ class DiscardDialog extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Link to="/project-list">
+            <Link to="/project-list" style={{ textDecoration: 'none' }}>
               <Button
                 color="primary"
                 onClick={this.onDiscard}

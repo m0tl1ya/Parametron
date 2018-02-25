@@ -72,7 +72,7 @@ class ModuleListToolbar extends Component {
     if (this.state.selectedIds.length > 0) {
       if (!this.state.creatingProject) {
         element = (
-          <Link to="/create-project">
+          <Link to="/create-project" style={{ textDecoration: 'none' }}>
             <Button
               raised
               color="secondary"

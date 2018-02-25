@@ -74,7 +74,7 @@ class NavBar extends Component {
         >
           <div className={classes.drawerInner}>
             <List>
-              <Link to="/project-list">
+              <Link to="/project-list" style={{ textDecoration: 'none' }}>
                 <ListItem button>
                   <ListItemIcon>
                     <FolderIcon />
@@ -82,7 +82,7 @@ class NavBar extends Component {
                     <ListItemText primary="Projects" />
                 </ListItem>
               </Link>
-              <Link to="/module-list">
+              <Link to="/module-list" style={{ textDecoration: 'none' }}>
                 <ListItem button>
                   <ListItemIcon>
                     <WebAssetIcon />
@@ -93,7 +93,7 @@ class NavBar extends Component {
             </List>
             <Divider />
             <List>
-              <Link to="/create-module">
+              <Link to="/create-module" style={{ textDecoration: 'none' }}>
                 <ListItem button>
                   <ListItemIcon>
                     <AddBoxIcon />

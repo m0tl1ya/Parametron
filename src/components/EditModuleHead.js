@@ -149,7 +149,7 @@ class EditModuleHead extends Component {
             fullWidth
             margin="normal"
           />
-        <Link to="/module-list">
+        <Link to="/module-list" style={{ textDecoration: 'none' }}>
             <Button
               raised
               color="primary"
@@ -161,7 +161,7 @@ class EditModuleHead extends Component {
           </Link>
 
           <span />
-          <Link to="/module-list">
+          <Link to="/module-list" style={{ textDecoration: 'none' }}>
           <Button
             raised
             color="primary"

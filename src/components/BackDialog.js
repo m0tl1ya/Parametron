@@ -58,7 +58,7 @@ class BackDialog extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Link to="/module-list">
+            <Link to="/module-list" style={{ textDecoration: 'none' }}>
               <Button
                 color="primary"
                 onClick={this.onDiscard}

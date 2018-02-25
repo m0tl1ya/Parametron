@@ -24,6 +24,7 @@ const styles = theme => ({
   },
   editButton: {
     marginTop: '2.0em',
+    marginBottom: '2.0em',
   },
   // buttonBars: {
   //   margin: '0.5em',
