@@ -38,8 +38,11 @@ const styles = theme => ({
     background: blueGrey[50], // #afbbc9
     width: 500,
   },
-  button: {
-    margin: '0.1em',
+  saveButton: {
+    margin: '1.0em',
+  },
+  settingArea: {
+    padding: '1em',
   },
 });
 
@@ -114,16 +117,27 @@ class ConfigProject extends Component {
         <Button
           raised
           color="secondary"
-          className={classes.button}
+          className={classes.saveButton}
           onClick={this.handleSave}
         >
         Save
         </Button>
-        {project.modules.map(module =>
-          <ConfigModule
-            module={module}
-            moduleForm={settingTargetFrame[module.name]}
+        <div className={classes.settingArea}>
+          {project.modules.map(module =>
+            <ConfigModule
+              module={module}
+              moduleForm={settingTargetFrame[module.name]}
           />)}
+        </div>
+        <Button
+          raised
+          color="secondary"
+          className={classes.saveButton}
+          onClick={this.handleSave}
+        >
+        Save
+        </Button>
+
       </div>
     );
   }

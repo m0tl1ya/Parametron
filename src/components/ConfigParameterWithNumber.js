@@ -13,6 +13,14 @@ import Typography from 'material-ui/Typography';
 import Switch from 'material-ui/Switch';
 import Checkbox from 'material-ui/Checkbox';
 
+import {
+  FormLabel,
+  FormControl,
+  FormGroup,
+  FormControlLabel,
+  FormHelperText,
+} from 'material-ui/Form';
+
 import range from '../lib/range'
 
 const styles = theme => ({
@@ -106,23 +114,21 @@ class ConfigParameterWithNumber extends Component {
     let element;
     if (this.state.checked) {
       element = (
-        <div>
-          <TextField
-            id="full-width"
-            label={parameter.text}
-            className={classes.descField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onBlur={this.handleBlur}
-            margin="normal"
-            type="number"
-          />
-        </div>
+        <TextField
+          id="full-width"
+          label={parameter.text}
+          className={classes.descField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onBlur={this.handleBlur}
+          margin="normal"
+          type="number"
+        />
       );
     } else {
       element = (
-        <div>
+        <span>
           <TextField
             id="full-width"
             label="Min"
@@ -165,7 +171,7 @@ class ConfigParameterWithNumber extends Component {
             defaultValue={this.state.step}
             value={this.state.step}
           />
-        </div>
+      </span>
       );
     }
     return (
@@ -173,14 +179,22 @@ class ConfigParameterWithNumber extends Component {
         <Paper className={classes.root}>
           <div>
             {parameter.text}
-            {element}
-            <Checkbox
-              tabIndex={-1}
-              onChange={this.handleToggle}
-              checked={this.state.checked}
-              disableRipple={false}
-            />
-          fixed
+            <div>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    tabIndex={-1}
+                    onChange={this.handleToggle}
+                    checked={this.state.checked}
+                    disableRipple={false}
+                  />
+                }
+                label="fixed"
+              />
+              {element}
+            </div>
+
+
           </div>
         </Paper>
       </div>

@@ -160,7 +160,6 @@ class ParameterItem extends Component {
               // defaultValue: 'this.state.type',
               // value: this.state.type
             }}
-
             margin="normal"
           >
             {typeOfParameters.map(option => (
@@ -189,11 +188,6 @@ class ParameterItem extends Component {
     );
   }
 }
-
-// <form className={classes.container} noValidate autoComplete="off">
-//
-// </form>
-
 
 
 

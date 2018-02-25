@@ -16,8 +16,9 @@ import ConfigParameterWithNumber from './ConfigParameterWithNumber';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
-    paddingTop: 2,
-    paddingBottom: 2,
+    // paddingTop: 2,
+    // paddingBottom: 2,
+    padding: '1em',
     marginTop: theme.spacing.unit,
     width: 600,
     marginLeft: '1em',
@@ -103,39 +104,35 @@ class ConfigParameter extends Component {
     }
     if (parameter.type === 'String') {
       return (
-        <div>
-          <Paper className={classes.root}>
-            <span>
-              {parameter.text}
-            </span>
-            <TextField
-              id="full-width"
-              label={parameter.text}
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              onBlur={this.handleBlur}
-              type="text"
-            />
-          </Paper>
-        </div>
+        <Paper className={classes.root}>
+          <span>
+            {parameter.text}
+          </span>
+          <TextField
+            id="full-width"
+            label={parameter.text}
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onBlur={this.handleBlur}
+            type="text"
+          />
+        </Paper>
       );
     }
     if (parameter.type === 'Bool') {
       return (
-        <div>
-          <Paper className={classes.root}>
-            <Typography component="p">
-              {parameter.text}
-            </Typography>
-            <Switch
-              checked={this.state.checked}
-              onChange={this.handleSwitch}
-              onBlur={this.handleBlur}
-            />
-          </Paper>
-        </div>
+        <Paper className={classes.root}>
+          <Typography component="p">
+            {parameter.text}
+          </Typography>
+          <Switch
+            checked={this.state.checked}
+            onChange={this.handleSwitch}
+            onBlur={this.handleBlur}
+          />
+        </Paper>
       );
     }
     return (

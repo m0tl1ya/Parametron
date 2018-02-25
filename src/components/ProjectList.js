@@ -100,11 +100,7 @@ ProjectList.propTypes = {
   projects: PropTypes.arrayOf.isRequired,
   hasError: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  // editModule: PropTypes.func.isRequired,
-  // selectModule: PropTypes.func.isRequired,
-  // untickModule: PropTypes.func.isRequired,
-  // getParameters: PropTypes.func.isRequired,
-  getHeaderInfo: PropTypes.func.isRequired,
+  // getHeaderInfo: PropTypes.func.isRequired,
   discardHeaderInfo: PropTypes.func.isRequired,
 };
 

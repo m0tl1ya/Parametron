@@ -184,17 +184,17 @@ class EditModuleHead extends Component {
         </div>
         <div>
           <TextField
-          id="full-width"
-          label="Description"
-          className={classes.descField}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={this.state.description}
-          onChange={this.handleChange('description')}
-          onBlur={this.handleBlur('description')}
-          margin="normal"
-        />
+            id="full-width"
+            label="Description"
+            className={classes.descField}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={this.state.description}
+            onChange={this.handleChange('description')}
+            onBlur={this.handleBlur('description')}
+            margin="normal"
+          />
         </div>
 
       <Divider />
