@@ -17,12 +17,13 @@ const styles = theme => ({
     marginLeft: '1em',
     display: 'flex',
     flexWrap: 'wrap',
+    alignItems: 'center',
   }),
   textField: {
     width: '20em',
     marginLeft: '0.2em',
     // marginLeft: '2em',
-    marginBottom: '0.9em',
+    // marginBottom: '0.9em',
     marginRight: theme.spacing.unit,
   },
 });

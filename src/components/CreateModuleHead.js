@@ -18,6 +18,9 @@ import DiscardDialog from './DiscardDialog';
 import db from '../lib/db';
 
 const styles = theme => ({
+  createModuleHeader: {
+    alignItems: 'center',
+  },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -30,9 +33,9 @@ const styles = theme => ({
     background: blueGrey[50],// #afbbc9
     width: 500,
   },
-  button: {
-    top: '0.0em',
-  }
+  // button: {
+  //   top: '0.0em',
+  // }
 });
 
 
@@ -126,8 +129,8 @@ class CreateModuleHead extends Component {
     const { classes } = this.props;
 
     return (
-      <div className="CreateModuleHeader">
-        <div>
+      <div>
+        <div className="createModuleHeader">
           <DiscardDialog
             discard={this.handleDiscard}
           />
@@ -147,22 +150,22 @@ class CreateModuleHead extends Component {
             className={classes.button}
             onClick={this.handleSave}
           >
-          Save
+            Save
           </Button>
         </div>
         <div>
           <TextField
-          id="full-width"
-          label="Description"
-          className={classes.descField}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={this.state.description}
-          onChange={this.handleChange('description')}
-          onBlur={this.handleBlur('description')}
-          margin="normal"
-        />
+            id="full-width"
+            label="Description"
+            className={classes.descField}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={this.state.description}
+            onChange={this.handleChange('description')}
+            onBlur={this.handleBlur('description')}
+            margin="normal"
+          />
         </div>
 
         <Divider />

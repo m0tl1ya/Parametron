@@ -21,6 +21,9 @@ import BackDialog from './BackDialog';
 import db from '../lib/db';
 
 const styles = theme => ({
+  header: {
+    alignItems: 'center',
+  },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -134,8 +137,8 @@ class EditModuleHead extends Component {
     const { classes } = this.props;
 
     return (
-      <div className="CreateModuleHeader">
-        <div>
+      <div>
+        <div className="header">
           <BackDialog
             discard={this.handleDiscard}
           />
@@ -149,14 +152,14 @@ class EditModuleHead extends Component {
             fullWidth
             margin="normal"
           />
-        <Link to="/module-list" style={{ textDecoration: 'none' }}>
+          <Link to="/module-list" style={{ textDecoration: 'none' }}>
             <Button
               raised
               color="primary"
               className={classes.button}
               onClick={this.handleSave}
             >
-            Save
+              Save
             </Button>
           </Link>
 
@@ -168,7 +171,7 @@ class EditModuleHead extends Component {
             className={classes.button}
             onClick={this.handleSaveAsNew}
           >
-          Save as New
+            Save as New
           </Button>
           </Link>
           <Link to="/module-list">
@@ -197,7 +200,7 @@ class EditModuleHead extends Component {
           />
         </div>
 
-      <Divider />
+        <Divider />
 
 
       </div>

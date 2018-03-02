@@ -30,6 +30,7 @@ const styles = theme => ({
     width: 600,
     marginLeft: '1em',
     display: 'flex',
+    alignItems: 'center',
     // flexWrap: 'wrap',
   }),
   container: {
@@ -37,15 +38,15 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   textField: {
-    top: '0.5em',
-    bottom: '0.5em',
+    // top: '0.5em',
+    // bottom: '0.5em',
     marginLeft: '2em',
     marginRight: theme.spacing.unit,
     width: '20em',
     // paddingBottom: '0em',
   },
   selectField: {
-    bottom: '0.5em',
+    // bottom: '0.5em',
     marginLeft: '15em',
     marginRight: theme.spacing.unit,
     width: '10em',
@@ -54,7 +55,7 @@ const styles = theme => ({
     width: 200,
   },
   deleteButton: {
-    top: '0.5em',
+    // top: '0.5em',
   },
 });
 
@@ -137,7 +138,6 @@ class ParameterItem extends Component {
       element = (
         <Paper className={classes.root} elevation={4}>
           <TextField
-
             labelClassName={classes.textField}
             InputClassName={classes.textField}
             value={parameter.text}
@@ -156,9 +156,6 @@ class ParameterItem extends Component {
               MenuProps: {
                 className: classes.menu,
               },
-              // native: true,
-              // defaultValue: 'this.state.type',
-              // value: this.state.type
             }}
             margin="normal"
           >
@@ -172,14 +169,13 @@ class ParameterItem extends Component {
             className={classes.deleteButton}
             aria-label="Delete"
             onClick={() => deleteParameter(parameter.id)}
-            >
+          >
             <ClearIcon />
           </IconButton>
 
 
         </Paper>
       );
-      // console.log(this.state);
     }
     return (
       <div>

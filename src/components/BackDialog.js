@@ -63,7 +63,7 @@ class BackDialog extends Component {
                 color="primary"
                 onClick={this.onDiscard}
               >
-                  Back
+                Back
               </Button>
             </Link>
             <Button onClick={this.handleRequestClose} color="primary" autoFocus>
