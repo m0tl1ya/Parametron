@@ -146,7 +146,7 @@ class CreateProjectHead extends Component {
     return (
       <div>
         <div className="ConfigModuleHeader">
-          <Link to="/module-list">
+          <Link to="/module-list"  style={{ textDecoration: 'none' }}>
             <Button
               raised
               color="secondary"
@@ -167,7 +167,7 @@ class CreateProjectHead extends Component {
               fullWidth
               margin="normal"
             />
-            <Link to="/module-list">
+            <Link to="/module-list"  style={{ textDecoration: 'none' }}>
               <Button
                 raised
                 color="primary"
