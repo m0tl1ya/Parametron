@@ -28,13 +28,15 @@
     "electron": "electron .",
     "dev": "nf start",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "package": "electron-packager . hoge --platform=win32 --arc=x64 --out=release"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.13",
     "@storybook/addon-links": "^3.2.13",
     "@storybook/react": "^3.2.13",
     "electron": "^1.7.11",
+    "electron-packager": "^11.1.0",
     "eslint": "^4.10.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
